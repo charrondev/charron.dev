@@ -1,0 +1,25 @@
+/**
+ * @copyright 2020 Adam (charrondev) Charron
+ * @license Proprietary
+ */
+
+.tags {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    margin-left: -3px;
+    width: calc(100% + 6px);
+}
+
+.tag {
+    /* background: var(--color-primary); */
+    background: var(--color-secondary-fade);
+    color: var(--color-secondary);
+    /* color: /#fff; */
+    font-size: 12px;
+    border-radius: 9px;
+    padding: 6px 9px;
+    margin: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+}

@@ -1,0 +1,35 @@
+.root {
+    border-bottom: 1px solid var(--color-border);
+    padding: 24px 0;
+}
+
+.root:last-child {
+    border-bottom: none;
+}
+
+.meta {
+    font-size: 12px;
+    color: #555;
+}
+
+.tags {
+    margin-bottom: 12px;
+}
+
+.title {
+    margin-bottom: 12px;
+
+    a {
+        color: var(--color-text) !important;
+    }
+}
+
+.excerpt {
+    margin-bottom: 12px;
+
+    :global {
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 22px;
+        }
+    }
+}
