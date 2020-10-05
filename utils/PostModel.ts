@@ -10,6 +10,7 @@ import matter, { GrayMatterFile } from "gray-matter";
 import { slugify } from "@utils/slugify";
 import renderToString from "next-mdx-remote/render-to-string";
 import { mdxOptionsServer } from "@utils/mdxOptions";
+var h2p = require("html2plaintext");
 
 // POSTS_PATH is useful when you want to get the path to a specific file
 export const POSTS_PATH = path.join(process.cwd(), "posts");
@@ -36,6 +37,7 @@ export interface IPost {
     slug: string;
     excerpt: string;
     content: string;
+    seoSummary: string;
     url: string;
 }
 
@@ -74,6 +76,7 @@ class PostModel {
                 content: parsed.content,
                 tags,
                 excerpt: parsed.excerpt || "No excerpt could be generated",
+                seoSummary: "",
                 date,
                 url: `/posts/${slug}`,
             };
@@ -136,10 +139,18 @@ class PostModel {
                 renderToString(post.content, mdxOptionsServer),
                 renderToString(post.excerpt, mdxOptionsServer),
             ]).then(([content, excerpt]) => {
+                let plaintextExcerpt = h2p(excerpt.renderedOutput).slice(
+                    0,
+                    160
+                );
+                if (plaintextExcerpt.length === 160) {
+                    plaintextExcerpt = plaintextExcerpt.slice(0, 159) + "…";
+                }
                 resolve({
                     ...post,
                     content,
                     excerpt,
+                    seoSummary: plaintextExcerpt,
                 });
             });
         });

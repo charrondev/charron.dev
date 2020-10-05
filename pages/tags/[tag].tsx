@@ -12,12 +12,20 @@ import {
     GetStaticPropsContext,
     GetStaticPropsResult,
 } from "next";
+import Head from "next/head";
 import React from "react";
 
 export default function TagPage({ postFragments, tag }: IProps) {
-    // const content = hydrate(post.content);
     return (
         <Layout>
+            <Head>
+                <title>#{tag.name} Tag | Charron Developer Blog</title>
+                <meta
+                    name="description"
+                    content="Content tags for the Charron Developer Blog."
+                ></meta>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <BigHeader>#{tag.slug}</BigHeader>
             {postFragments.map((fragment, i) => {
                 return <PostSummary post={fragment} key={i} />;

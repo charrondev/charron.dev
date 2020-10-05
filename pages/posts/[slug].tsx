@@ -15,11 +15,17 @@ import {
     GetStaticPropsContext,
     GetStaticPropsResult,
 } from "next";
+import Head from "next/head";
 import React from "react";
 
 export default function PostPage({ post }: IProps) {
     return (
         <Layout>
+            <Head>
+                <title>{post.name} | Charron Developer Blog</title>
+                <meta name="description" content={post.seoSummary}></meta>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <BigHeader after={<PostMeta post={post} />}>{post.name}</BigHeader>
             <PostContent>{post.content}</PostContent>
         </Layout>

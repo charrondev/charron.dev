@@ -6,6 +6,7 @@
 import Logo from "@logos/charrondev-dark.svg";
 import classNames from "classnames";
 import { useRouter } from "next/dist/client/router";
+import Head from "next/head";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./Layout.module.scss";
@@ -32,6 +33,16 @@ export function Layout({ children }: IProps) {
     );
     return (
         <div className={styles.root}>
+            <Head>
+                <title>Charron Developer Blog</title>
+                <meta
+                    name="description"
+                    content="Adam Charron's Developer blog. Covering Javascript, React,
+                    PHP, MySQL, Git and scaling sites to handle million's of
+                    requests per hour."
+                ></meta>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <header className={styles.header}>
                 <div className={styles.headerContainer}>
                     <Link href="/">

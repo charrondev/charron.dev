@@ -14,10 +14,6 @@ import { writeSiteMap } from "@utils/writeSitemap";
 export default function Home({ tags, postFragments }: IProps) {
     return (
         <Layout>
-            <Head>
-                <title>Create Next App</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             {postFragments.map((fragment, i) => {
                 return <PostSummary post={fragment} key={i} />;
             })}
