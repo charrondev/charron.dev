@@ -1,5 +1,7 @@
 import { ColoredButtonLink } from "@components/ColoredLinkButton";
 import { PostContent } from "@components/posts/PostContent";
+import { PostMeta } from "@components/posts/PostMeta";
+import { Separator } from "@components/Separator";
 import { Tags } from "@components/Tags";
 import { IPostFragment } from "@utils/PostModel";
 import Link from "next/link";
@@ -23,7 +25,8 @@ export function PostSummary({ post }: IProps) {
                     <a>{post.name}</a>
                 </Link>
             </h2>
-            <Tags tags={post.tags} className={styles.tags} />
+            <PostMeta post={post} />
+            <Separator className={styles.separator} />
             <PostContent className={styles.excerpt}>{post.excerpt}</PostContent>
             <ColoredButtonLink href={post.url}>View Post →</ColoredButtonLink>
         </div>

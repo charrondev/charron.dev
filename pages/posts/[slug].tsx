@@ -1,6 +1,8 @@
 import { BigHeader } from "@components/BigHeader";
+import { DateTime } from "@components/DateTime";
 import { Layout } from "@components/Layout";
 import { PostContent } from "@components/posts/PostContent";
+import { PostMeta } from "@components/posts/PostMeta";
 import { Tags } from "@components/Tags";
 import { IPost, postModel } from "@utils/PostModel";
 /**
@@ -18,12 +20,7 @@ import React from "react";
 export default function PostPage({ post }: IProps) {
     return (
         <Layout>
-            <BigHeader>{post.name}</BigHeader>
-            <div>
-                <strong>Posted: </strong>
-                {post.date}
-            </div>
-            <Tags tags={post.tags} />
+            <BigHeader after={<PostMeta post={post} />}>{post.name}</BigHeader>
             <PostContent>{post.content}</PostContent>
         </Layout>
     );

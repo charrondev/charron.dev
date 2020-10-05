@@ -3,20 +3,23 @@
  * @license Proprietary
  */
 
+import { Separator } from "@components/Separator";
 import classNames from "classnames";
+import React from "react";
 import styles from "./components.module.scss";
 
-interface IProps extends React.HTMLAttributes<HTMLHeadingElement> {}
+interface IProps extends React.HTMLAttributes<HTMLHeadingElement> {
+    after?: React.ReactNode;
+}
 
 export function BigHeader(props: IProps) {
     return (
-        <h1
-            {...props}
-            className={classNames(props.className, styles.BigHeader)}
-        >
-            {props.children}
-            <span className={styles.BigHeaderDecorator1}></span>
-            <span className={styles.BigHeaderDecorator2}></span>
-        </h1>
+        <div className={classNames(props.className, styles.BigHeader)}>
+            <h1 {...props} className={styles.BigHeaderContent}>
+                {props.children}
+            </h1>
+            {props.after}
+            <Separator />
+        </div>
     );
 }

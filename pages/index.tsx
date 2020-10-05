@@ -9,6 +9,7 @@ import { IPostFragment, ITag, postModel } from "@utils/PostModel";
 import { GetStaticPropsContext, GetStaticPropsResult } from "next";
 import React from "react";
 import Head from "next/head";
+import { writeSiteMap } from "@utils/writeSitemap";
 
 export default function Home({ tags, postFragments }: IProps) {
     return (
@@ -34,6 +35,7 @@ export async function getStaticProps(
 ): Promise<GetStaticPropsResult<IProps>> {
     const postFragments = await postModel.getRecentPosts();
     const tags = postModel.getTags();
+    await writeSiteMap("https://charron.dev");
     return {
         props: {
             postFragments,

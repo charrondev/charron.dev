@@ -31,6 +31,7 @@ export interface ITag {
 export interface IPost {
     name: string;
     date: string;
+    updated: string | null;
     tags: ITag[];
     slug: string;
     excerpt: string;
@@ -67,6 +68,7 @@ class PostModel {
                 parsed.data.date ?? fileRegexp?.groups?.date ?? "2020-01-01";
 
             const post: IPost = {
+                updated: parsed.data.updated ?? null,
                 name,
                 slug,
                 content: parsed.content,
