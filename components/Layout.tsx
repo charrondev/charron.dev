@@ -39,16 +39,20 @@ export function Layout({ children }: IProps) {
                             <Logo className={styles.logo} />
                         </a>
                     </Link>
-                    <Hamburger
-                        className={isOpen ? styles.hamburgerOpen : undefined}
-                        onClick={() => {
-                            if (isOpen) {
-                                setIsOpen(false);
-                            } else {
-                                setIsOpen(true);
+                    <span className={styles.hamburgerWrap}>
+                        <Hamburger
+                            className={
+                                isOpen ? styles.hamburgerOpen : undefined
                             }
-                        }}
-                    />
+                            onClick={() => {
+                                if (isOpen) {
+                                    setIsOpen(false);
+                                } else {
+                                    setIsOpen(true);
+                                }
+                            }}
+                        />
+                    </span>
                     {nav}
                 </div>
             </header>
