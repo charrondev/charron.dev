@@ -78,7 +78,7 @@ This is the bulk of the required configuration. It does the following:
     -   A query parameter of `?XDEBUG_SESSION_START`
     -   Many possible cookie values used by various browser plugins and IDEs.
 
-```
+```nginx
 http {
     # ... Other top level config.
 
@@ -125,7 +125,7 @@ http {
 
 **Debug PHP config**
 
-```
+```ini
 [www]
 listen = /shared/var/run/php-fpm-xdebug.sock
 listen.owner = www-data
@@ -150,7 +150,7 @@ xdebug.remote_cookie_expire_time = 1
 
 **"Production-ish" PHP config**
 
-```
+```ini
 [www]
 listen = /shared/var/run/php-fpm.sock
 
