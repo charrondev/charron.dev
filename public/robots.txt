@@ -1,0 +1,2 @@
+Sitemap: https://charron.dev/sitemap.xml
+User-agent: *
