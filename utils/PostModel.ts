@@ -134,25 +134,29 @@ class PostModel {
     }
 
     private makeRenderedPost(post: IPost): Promise<IPost> {
+        function render(content: string) {
+            content = content.replace(/\\\$/gm, "$");
+            return renderToString(content, mdxOptionsServer);
+        }
+
         return new Promise((resolve) => {
-            Promise.all([
-                renderToString(post.content, mdxOptionsServer),
-                renderToString(post.excerpt, mdxOptionsServer),
-            ]).then(([content, excerpt]) => {
-                let plaintextExcerpt = h2p(excerpt.renderedOutput).slice(
-                    0,
-                    160
-                );
-                if (plaintextExcerpt.length === 160) {
-                    plaintextExcerpt = plaintextExcerpt.slice(0, 159) + "…";
+            Promise.all([render(post.content), render(post.excerpt)]).then(
+                ([content, excerpt]) => {
+                    let plaintextExcerpt = h2p(excerpt.renderedOutput).slice(
+                        0,
+                        160
+                    );
+                    if (plaintextExcerpt.length === 160) {
+                        plaintextExcerpt = plaintextExcerpt.slice(0, 159) + "…";
+                    }
+                    resolve({
+                        ...post,
+                        content,
+                        excerpt,
+                        seoSummary: plaintextExcerpt,
+                    });
                 }
-                resolve({
-                    ...post,
-                    content,
-                    excerpt,
-                    seoSummary: plaintextExcerpt,
-                });
-            });
+            );
         });
     }
 
