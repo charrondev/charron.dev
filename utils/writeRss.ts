@@ -22,7 +22,7 @@ export async function writeRss() {
             guid: post.slug,
             url: post.url,
             date: post.updated ?? post.date,
-            description: post.excerpt,
+            description: (post.excerpt as any).renderedOutput,
             author: "Adam Charron",
         });
     });

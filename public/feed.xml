@@ -4,11 +4,14 @@
         <description><![CDATA[Adam Charron's Developer blog]]></description>
         <link>https://charron.dev</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 13 Nov 2020 04:54:30 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 13 Nov 2020 04:58:10 GMT</lastBuildDate>
         <atom:link href="https://charron.dev/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[Self-Hosting Analytics with Plausible]]></title>
-            <description><![CDATA[[object Object]]]></description>
+            <description><![CDATA[<p>I was recently looking for a cheap way to move a few sites off of Google Analytics
+and began looking into various options, both cloud-hosted and self-hosted.</p><h2>Available Options</h2><p>Unfortunately most cloud-hosted options (that aren't google analytics)
+are relatively pricy for what are essentially low traffic sites. After a bit of evalution
+the best options seemed to be:</p><ul><li><a href="https://usefathom.com/pricing">Fathom (cloud)</a> - $14/month</li><li><a href="https://github.com/usefathom/fathom">Fathom (self-hosted)</a> - ~$5/month</li><li><a href="https://matomo.org/pricing/">Matamo (cloud)</a> - $30/month</li><li><a href="https://github.com/matomo-org/matomo">Matamo (self-hosted)</a> - $10/month (greater server requirements)</li><li><a href="https://plausible.io/">Plausible (cloud)</a> - $6/month</li><li><a href="https://github.com/plausible/analytics">Plausible (self-hosted)</a> - $5/month</li></ul>]]></description>
             <link>/posts/self-hosting-analytics-with-plausible</link>
             <guid isPermaLink="false">self-hosting-analytics-with-plausible</guid>
             <dc:creator><![CDATA[Adam Charron]]></dc:creator>
@@ -16,7 +19,12 @@
         </item>
         <item>
             <title><![CDATA[Speeding Up PHP in Docker w/ XDebug]]></title>
-            <description><![CDATA[[object Object]]]></description>
+            <description><![CDATA[<p>I've been using Docker for my local environments at Vanilla since 2017.
+It was a good way to ensure consistent &amp; reproducible developer environments
+and was a marked improvement over what we were running before. We setup a single repository
+with our shared environment (<a href="https://github.com/vanilla/vanilla-docker">vanilla-docker</a>) and
+it spread across the company like wildfire.</p><p>The consistency was great, especially as we onboarded various junior developers over the years.
+Unfortunately in 2018, Apple released MacOS High Sierra, sporting a new filesystem, <a href="https://en.wikipedia.org/wiki/Apple_File_System">APFS</a>.</p>]]></description>
             <link>/posts/speeding-up-php-in-docker-xdebug</link>
             <guid isPermaLink="false">speeding-up-php-in-docker-xdebug</guid>
             <dc:creator><![CDATA[Adam Charron]]></dc:creator>
@@ -24,7 +32,9 @@
         </item>
         <item>
             <title><![CDATA[Hello world]]></title>
-            <description><![CDATA[[object Object]]]></description>
+            <description><![CDATA[<p>I've been meening to start my own blog post for some time. I've written a few posts on <a href="https://dev.to">dev.to</a> before
+but I decided that if I was going to keep doing it, I would it would be best to have it on my own domain.</p><p>I'm aiming to write frequently, at least once a week until this Covid-19 pandemic is over.</p><p>This is mostly intended as a bit of a future journal for myself, but hopefully anyone else reading it can get some
+utility out of my programming experiences.</p>]]></description>
             <link>/posts/hello-world</link>
             <guid isPermaLink="false">hello-world</guid>
             <dc:creator><![CDATA[Adam Charron]]></dc:creator>
@@ -32,7 +42,7 @@
         </item>
         <item>
             <title><![CDATA[Getting to know QuillJS (Parchment, Blots, and Lifecycle)]]></title>
-            <description><![CDATA[[object Object]]]></description>
+            <description><![CDATA[<p><em>Note: This series is targeted at people trying to gain an advanced understanding of Quill and Parchment. If you're just trying to get started with an easy, well-featured editor, it might be good idea to check out Quill's <a href="https://quilljs.com/docs/quickstart/">Quickstart Guide</a> or <a href="https://quilljs.com/guides/cloning-medium-with-parchment/">Cloning Medium with Parchment guide</a>.</em></p><h2>What is Quill?</h2><p><a href="https://quilljs.com/">QuillJS</a> is a modern rich text editor built for compatibility and extensibility. It was created by <a href="https://twitter.com/jhchen">Jason Chen</a> and <a href="https://twitter.com/byronmilligan">Byron Milligan</a> and open sourced by Salesforce. Since then it has been used by hundreds of other companies and people to build fast, reliable, and rich editing experiences in a browser.</p>]]></description>
             <link>/posts/getting-to-know-quilljs</link>
             <guid isPermaLink="false">getting-to-know-quilljs</guid>
             <dc:creator><![CDATA[Adam Charron]]></dc:creator>
