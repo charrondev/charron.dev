@@ -10,19 +10,19 @@ import RSS from "rss";
 
 export async function writeRss() {
     const feed = new RSS({
-        title: "Adam Charron's Developer blog",
+        title: "Charron Dev Blog",
         site_url: "https://charron.dev",
         feed_url: "https://charron.dev/feed.xml",
     });
 
-    const postFragments = await postModel.getRecentPosts(0, 20);
+    const postFragments = await postModel.getRecentPosts(0, 20, false);
     postFragments.map((post) => {
         feed.item({
             title: post.name,
             guid: post.slug,
             url: post.url,
             date: post.updated ?? post.date,
-            description: (post.excerpt as any).renderedOutput,
+            description: (post.content as any).renderedOutput,
             author: "Adam Charron",
         });
     });

@@ -43,9 +43,7 @@ export interface IPost {
 
 type ISlugAndDate = Pick<IPost, "slug" | "date">;
 
-export interface IPostFragment extends IPost {
-    content: never;
-}
+export interface IPostFragment extends IPost {}
 
 class PostModel {
     private postsBySlug: Record<string, Promise<IPost>> = {};
@@ -178,7 +176,8 @@ class PostModel {
 
     public async getRecentPosts(
         offset: number = 0,
-        limit: number = 10
+        limit: number = 10,
+        asFragment: boolean = true
     ): Promise<IPostFragment[]> {
         const start = offset * limit;
         const end = start + limit;
@@ -186,7 +185,7 @@ class PostModel {
         const posts = await Promise.all(
             slugs.map((slug) => this.postsBySlug[slug])
         );
-        return posts.map(this.postToFragment);
+        return asFragment ? posts.map(this.postToFragment) : posts;
     }
 
     public async getPostsByTag(tagSlug: string): Promise<IPostFragment[]> {
