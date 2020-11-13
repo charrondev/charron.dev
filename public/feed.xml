@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Adam Charron's Developer blog]]></title>
+        <description><![CDATA[Adam Charron's Developer blog]]></description>
+        <link>https://charron.dev</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Fri, 13 Nov 2020 04:54:30 GMT</lastBuildDate>
+        <atom:link href="https://charron.dev/feed.xml" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Self-Hosting Analytics with Plausible]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>/posts/self-hosting-analytics-with-plausible</link>
+            <guid isPermaLink="false">self-hosting-analytics-with-plausible</guid>
+            <dc:creator><![CDATA[Adam Charron]]></dc:creator>
+            <pubDate>Sun, 08 Nov 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Speeding Up PHP in Docker w/ XDebug]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>/posts/speeding-up-php-in-docker-xdebug</link>
+            <guid isPermaLink="false">speeding-up-php-in-docker-xdebug</guid>
+            <dc:creator><![CDATA[Adam Charron]]></dc:creator>
+            <pubDate>Fri, 06 Nov 2020 05:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Hello world]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>/posts/hello-world</link>
+            <guid isPermaLink="false">hello-world</guid>
+            <dc:creator><![CDATA[Adam Charron]]></dc:creator>
+            <pubDate>Thu, 01 Oct 2020 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Getting to know QuillJS (Parchment, Blots, and Lifecycle)]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>/posts/getting-to-know-quilljs</link>
+            <guid isPermaLink="false">getting-to-know-quilljs</guid>
+            <dc:creator><![CDATA[Adam Charron]]></dc:creator>
+            <pubDate>Sun, 04 Oct 2020 04:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

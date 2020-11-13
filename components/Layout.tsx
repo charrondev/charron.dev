@@ -28,6 +28,7 @@ export function Layout({ children }: IProps) {
         >
             <NavLink href="/posts">Posts</NavLink>
             <NavLink href="/tags">Tags</NavLink>
+            <NavLink href="/feed.xml">RSS Feed</NavLink>
             <NavLink href="https://github.com/charrondev">GitHub</NavLink>
         </nav>
     );

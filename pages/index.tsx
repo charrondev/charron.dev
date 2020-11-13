@@ -10,6 +10,7 @@ import { GetStaticPropsContext, GetStaticPropsResult } from "next";
 import React from "react";
 import Head from "next/head";
 import { writeSiteMap } from "@utils/writeSitemap";
+import { writeRss } from "@utils/writeRss";
 
 export default function Home({ tags, postFragments }: IProps) {
     return (
@@ -32,6 +33,7 @@ export async function getStaticProps(
     const postFragments = await postModel.getRecentPosts();
     const tags = postModel.getTags();
     await writeSiteMap("https://charron.dev");
+    await writeRss();
     return {
         props: {
             postFragments,
