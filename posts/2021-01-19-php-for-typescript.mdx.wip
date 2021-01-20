@@ -1,0 +1,39 @@
+---
+name: PHP for Javascript Developers - Syntax
+slug: php-for-javscript-typescript-developers
+tags:
+    - PHP
+    - Javascript
+    - Typescript
+    - Guide
+---
+
+## Types on local variables
+
+It's not currently possible to set types for local variables in PHP.
+
+There is no equivalent to the following typescript in PHP.
+
+```ts
+const thing: string = "value";
+```
+
+## Types
+
+## Typing a function definition
+
+## Interfaces
+
+## Classes as Types
+
+## Types on class properties.
+
+## Array Types
+
+##
+
+## Generics
+
+## Enums
+
+Later RFC.
