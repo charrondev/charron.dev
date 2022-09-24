@@ -5,6 +5,7 @@
 import { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles/globals.css";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
@@ -12,13 +13,13 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
             <Head>
                 <html lang={"en"} />
-                <script
-                    async
-                    defer
-                    data-domain="charron.dev"
-                    src="https://stats.charron.dev/js/plausible.js"
-                ></script>
             </Head>
+            <Script
+                async
+                defer
+                data-domain="charron.dev"
+                src="https://stats.charron.dev/js/plausible.js"
+            />
         </>
     );
 }
