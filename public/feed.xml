@@ -4,7 +4,7 @@
         <description><![CDATA[Charron Dev Blog]]></description>
         <link>https://charron.dev</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 24 Sep 2022 17:19:57 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 24 Sep 2022 17:37:50 GMT</lastBuildDate>
         <atom:link href="https://charron.dev/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[PHP for Javascript Developers - Runtime]]></title>
