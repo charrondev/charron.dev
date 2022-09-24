@@ -11,9 +11,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     return (
         <>
             <Component {...pageProps} />
-            <Head>
-                <html lang={"en"} />
-            </Head>
             <Script
                 async
                 defer
