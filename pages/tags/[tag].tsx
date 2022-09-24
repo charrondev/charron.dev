@@ -19,7 +19,7 @@ export default function TagPage({ postFragments, tag }: IProps) {
     return (
         <Layout>
             <Head>
-                <title>#{tag.name} Tag | Charron Developer Blog</title>
+                <title>{`#${tag.name} Tag | Charron Developer Blog`}</title>
                 <meta
                     name="description"
                     content="Content tags for the Charron Developer Blog."

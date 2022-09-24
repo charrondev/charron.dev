@@ -157,7 +157,7 @@ Arrays can be made up of multiple types, and use the `[` and `]` symbols to indi
 ["item1", "item2", 1, true, ["nested"]];
 ```
 
-Older versions of PHP (PHP <= 5.3) didn't support this array syntax and used `array(` and `)` to indicate the start and end of an array.
+Older versions of PHP (PHP {"<="} 5.3) didn't support this array syntax and used `array(` and `)` to indicate the start and end of an array.
 
 ```php
 array("item1", "item2", 1, true, array("nested"));

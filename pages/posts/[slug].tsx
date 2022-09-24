@@ -22,7 +22,7 @@ export default function PostPage({ post }: IProps) {
     return (
         <Layout>
             <Head>
-                <title>{post.name} | Charron Developer Blog</title>
+                <title>{`${post.name} | Charron Developer Blog`}</title>
                 <meta name="description" content={post.seoSummary}></meta>
                 <link rel="icon" href="/favicon.ico" />
             </Head>

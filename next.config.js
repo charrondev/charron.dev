@@ -4,9 +4,8 @@
  */
 
 const withPreact = require("next-plugin-preact");
-
 module.exports = withPreact({
-    webpack(config) {
+    webpack(config, { dev, isServer }) {
         config.module.rules.push({
             test: /\.svg$/,
             use: [
@@ -20,5 +19,6 @@ module.exports = withPreact({
         });
         return config;
     },
+    swcMinify: true,
     pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 });

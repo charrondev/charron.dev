@@ -16,6 +16,7 @@
     /* background: var(--color-primary); */
     background: var(--color-secondary-fade);
     color: var(--color-secondary);
+    border: 1px solid var(--color-secondary-edge);
     /* color: /#fff; */
     font-size: 12px;
     border-radius: 9px;
@@ -23,4 +24,11 @@
     margin: 3px;
     text-transform: uppercase;
     font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .tag {
+        font-size: 14px;
+        padding: 12px 16px;
+    }
 }

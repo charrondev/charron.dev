@@ -6,10 +6,14 @@
 import fs from "fs";
 import path from "path";
 import { notEmpty } from "@utils/notEmpty";
-import matter, { GrayMatterFile } from "gray-matter";
+import matter from "gray-matter";
 import { slugify } from "@utils/slugify";
-import renderToString from "next-mdx-remote/render-to-string";
-import { mdxOptionsServer } from "@utils/mdxOptions";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeFormat from "rehype-format";
+import rehypeStringify from "rehype-stringify";
+const rehypePrism = require("@mapbox/rehype-prism");
 var h2p = require("html2plaintext");
 
 // POSTS_PATH is useful when you want to get the path to a specific file
@@ -132,18 +136,21 @@ class PostModel {
     }
 
     private makeRenderedPost(post: IPost): Promise<IPost> {
-        function render(content: string) {
-            content = content.replace(/\\\$/gm, "$");
-            return renderToString(content, mdxOptionsServer);
+        async function render(content: string) {
+            const file = await unified()
+                .use(remarkParse)
+                .use(remarkRehype)
+                .use(rehypePrism)
+                .use(rehypeFormat)
+                .use(rehypeStringify)
+                .process(content);
+            return file.toString();
         }
 
         return new Promise((resolve) => {
             Promise.all([render(post.content), render(post.excerpt)]).then(
                 ([content, excerpt]) => {
-                    let plaintextExcerpt = h2p(excerpt.renderedOutput).slice(
-                        0,
-                        160
-                    );
+                    let plaintextExcerpt = h2p(excerpt).slice(0, 160);
                     if (plaintextExcerpt.length === 160) {
                         plaintextExcerpt = plaintextExcerpt.slice(0, 159) + "…";
                     }

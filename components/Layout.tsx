@@ -47,7 +47,11 @@ export function Layout({ children }: IProps) {
             <header className={styles.header}>
                 <div className={styles.headerContainer}>
                     <Link href="/">
-                        <a className={styles.logoLink}>
+                        <a
+                            title="Charron.dev logo."
+                            aria-label="Logo spelling out charron.dev"
+                            className={styles.logoLink}
+                        >
                             <Logo className={styles.logo} />
                         </a>
                     </Link>
@@ -76,6 +80,9 @@ export function Layout({ children }: IProps) {
 function Hamburger(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
     return (
         <button
+            type="button"
+            title="Toggle Navigation"
+            aria-label="Toggle Navigation"
             {...props}
             className={classNames(styles.hamburger, props.className)}
         >

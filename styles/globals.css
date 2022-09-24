@@ -29,8 +29,9 @@ p {
     --color-border: #dadada;
     --color-primary-fade: #ffd5d5;
     --color-primary: #ca054d;
-    --color-secondary: #1a82d8;
-    --color-secondary-fade: #e6f4ff;
+    --color-secondary: #046fc7;
+    --color-secondary-fade: #f8fcff;
+    --color-secondary-edge: #c1e4ff;
 }
 
 a {
