@@ -50,10 +50,9 @@ export function Layout({ children }: IProps) {
                         href="/"
                         title="Charron.dev logo."
                         aria-label="Logo spelling out charron.dev"
-                        className={styles.logoLink}>
-
+                        className={styles.logoLink}
+                    >
                         <Logo className={styles.logo} />
-
                     </Link>
                     <span className={styles.hamburgerWrap}>
                         <Hamburger
@@ -108,13 +107,12 @@ export const NavLink = ({ href, children }: INavLinkProps) => {
     }
 
     return (
-        (<Link
+        <Link
             href={href}
             className={classes.join(" ")}
-            aria-current={isCurrent ? "page" : undefined}>
-
+            aria-current={isCurrent ? "page" : undefined}
+        >
             {children}
-
-        </Link>)
+        </Link>
     );
 };

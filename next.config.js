@@ -3,9 +3,16 @@
  * @license Proprietary
  */
 
-const withPreact = require("next-plugin-preact");
-module.exports = withPreact({
+module.exports = {
     webpack(config, { dev, isServer }) {
+        if (!dev && !isServer) {
+            Object.assign(config.resolve.alias, {
+                "react/jsx-runtime.js": "preact/compat/jsx-runtime",
+                react: "preact/compat",
+                "react-dom/test-utils": "preact/test-utils",
+                "react-dom": "preact/compat",
+            });
+        }
         config.module.rules.push({
             test: /\.svg$/,
             use: [
@@ -19,6 +26,7 @@ module.exports = withPreact({
         });
         return config;
     },
+    reactStrictMode: true,
     swcMinify: true,
     pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-});
+};
