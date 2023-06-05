@@ -15,10 +15,8 @@ interface IProps {
 
 export function ColoredButtonLink({ children, className, href }: IProps) {
     return (
-        (<Link href={href} className={classNames(styles.viewLink, className)}>
-
+        <Link href={href} className={classNames(styles.viewLink, className)}>
             <span className={styles.viewLinkContent}>{children}</span>
-
-        </Link>)
+        </Link>
     );
 }

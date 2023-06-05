@@ -21,9 +21,7 @@ export function PostSummary({ post }: IProps) {
     return (
         <div className={styles.root}>
             <h2 className={styles.title}>
-                <Link href={url}>
-                    {post.name}
-                </Link>
+                <Link href={url}>{post.name}</Link>
             </h2>
             <PostMeta post={post} />
             <Separator className={styles.separator} />
