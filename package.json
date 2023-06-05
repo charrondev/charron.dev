@@ -25,6 +25,7 @@
         "unified": "^10.1.2"
     },
     "devDependencies": {
+        "@cloudflare/next-on-pages": "^1.0.1",
         "@svgr/webpack": "^8.0.1",
         "@types/node": "^20.2.5",
         "@types/react": "^18.2.8",
