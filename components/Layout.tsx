@@ -46,14 +46,14 @@ export function Layout({ children }: IProps) {
             </Head>
             <header className={styles.header}>
                 <div className={styles.headerContainer}>
-                    <Link href="/">
-                        <a
-                            title="Charron.dev logo."
-                            aria-label="Logo spelling out charron.dev"
-                            className={styles.logoLink}
-                        >
-                            <Logo className={styles.logo} />
-                        </a>
+                    <Link
+                        href="/"
+                        title="Charron.dev logo."
+                        aria-label="Logo spelling out charron.dev"
+                        className={styles.logoLink}>
+
+                        <Logo className={styles.logo} />
+
                     </Link>
                     <span className={styles.hamburgerWrap}>
                         <Hamburger
@@ -108,13 +108,13 @@ export const NavLink = ({ href, children }: INavLinkProps) => {
     }
 
     return (
-        <Link href={href}>
-            <a
-                className={classes.join(" ")}
-                aria-current={isCurrent ? "page" : undefined}
-            >
-                {children}
-            </a>
-        </Link>
+        (<Link
+            href={href}
+            className={classes.join(" ")}
+            aria-current={isCurrent ? "page" : undefined}>
+
+            {children}
+
+        </Link>)
     );
 };

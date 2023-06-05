@@ -22,7 +22,7 @@ export function PostSummary({ post }: IProps) {
         <div className={styles.root}>
             <h2 className={styles.title}>
                 <Link href={url}>
-                    <a>{post.name}</a>
+                    {post.name}
                 </Link>
             </h2>
             <PostMeta post={post} />

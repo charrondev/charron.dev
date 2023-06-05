@@ -11,9 +11,9 @@ import Link from "next/link";
 
 export function Tag(props: ITag) {
     return (
-        <Link href={props.url}>
-            <a className={styles.tag}>#{props.name}</a>
-        </Link>
+        (<Link href={props.url} className={styles.tag}>
+            #{props.name}
+        </Link>)
     );
 }
 
