@@ -30,7 +30,7 @@ export async function getRssStream(): Promise<ReadableStream> {
             title: post.name,
             guid: post.slug,
             id: post.url,
-            link: post.url,
+            link: `https://charron.dev` + post.url,
             category: post.tags.map((tag) => ({ name: tag.name })),
             date: new Date(post.updated ?? post.date),
             description: post.seoSummary,
