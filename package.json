@@ -9,9 +9,6 @@
     },
     "dependencies": {
         "@mapbox/rehype-prism": "^0.7.0",
-        "@mdx-js/loader": "^2.3.0",
-        "@mdx-js/react": "^2.3.0",
-        "@next/mdx": "^13.4.4",
         "@preact/compat": "^17.1.2",
         "classnames": "^2.3.2",
         "feed": "^4.2.2",

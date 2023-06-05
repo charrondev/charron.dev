@@ -48,6 +48,6 @@ export function generateMetadata(props: IProps): Metadata {
 export function generateStaticParams() {
     const allTags = postModel.getTags();
     return allTags.map((tag) => {
-        return { slug: tag.slug };
+        return { tagName: tag.slug };
     });
 }
