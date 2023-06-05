@@ -4,11 +4,12 @@
  */
 
 import { postModel } from "@utils/PostModel";
-import fs from "fs";
-import path from "path";
+import { stringToStream } from "@utils/stringToStream";
 import { SitemapStream, streamToPromise } from "sitemap";
 
-export async function writeSiteMap(hostname: string) {
+export async function getSitemapStream(
+    hostname: string
+): Promise<ReadableStream<any>> {
     const smStream = new SitemapStream({
         hostname,
     });
@@ -26,5 +27,5 @@ export async function writeSiteMap(hostname: string) {
     smStream.end();
 
     const sitemap = await streamToPromise(smStream).then((sm) => sm.toString());
-    fs.writeFileSync(path.join(process.cwd(), "public/sitemap.xml"), sitemap);
+    return stringToStream(sitemap);
 }

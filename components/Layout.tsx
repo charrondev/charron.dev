@@ -3,13 +3,15 @@
  * @license Proprietary
  */
 
+"use client";
+
 import Logo from "@logos/charrondev-dark.svg";
 import classNames from "classnames";
-import { useRouter } from "next/dist/client/router";
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./Layout.module.scss";
+import { usePathname } from "next/navigation";
 
 interface IProps {
     panel?: React.ReactNode;
@@ -97,11 +99,11 @@ interface INavLinkProps {
     children: React.ReactNode;
 }
 
-export const NavLink = ({ href, children }: INavLinkProps) => {
-    const router = useRouter();
+const NavLink = ({ href, children }: INavLinkProps) => {
+    const pathname = usePathname();
 
     const classes = [styles.headerNavLink];
-    const isCurrent = router.pathname.startsWith(href);
+    const isCurrent = pathname?.startsWith(href);
     if (isCurrent) {
         classes.push(styles.activeNavLink);
     }

@@ -4,11 +4,12 @@
  */
 
 import { postModel } from "@utils/PostModel";
-import fs from "fs";
-import path from "path";
+import { stringToStream } from "@utils/stringToStream";
+import { WriteStream } from "fs";
+import { notFound } from "next/navigation";
 import RSS from "rss";
 
-export async function writeRss() {
+export async function getRssStream(): Promise<ReadableStream> {
     const feed = new RSS({
         title: "Charron Dev Blog",
         site_url: "https://charron.dev",
@@ -39,5 +40,5 @@ export async function writeRss() {
     });
 
     const output = feed.xml({ indent: true });
-    fs.writeFileSync(path.join(process.cwd(), "public/feed.xml"), output);
+    return stringToStream(output);
 }
