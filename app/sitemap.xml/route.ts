@@ -2,6 +2,8 @@ import "server-only";
 import { NextRequest, NextResponse } from "next/server";
 import { getSitemapStream } from "@utils/getSitemapStream";
 
+export const runtime = "edge";
+
 export async function GET(request: NextRequest) {
     const stream = await getSitemapStream(
         request.nextUrl.protocol + request.nextUrl.host
