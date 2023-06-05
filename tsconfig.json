@@ -1,8 +1,10 @@
 {
     "compilerOptions": {
         "paths": {
+            "@app/*": ["app/*"],
             "@pages/*": ["pages/*"],
             "@styles/*": ["styles/*"],
+            "@posts/*": ["posts/*"],
             "@components/*": ["components/*"],
             "@utils/*": ["utils/*"],
             "@logos/*": ["logos/*"]

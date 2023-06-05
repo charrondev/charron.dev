@@ -6,9 +6,12 @@ import { BigHeader } from "@components/BigHeader";
 import { Layout } from "@components/Layout";
 import { PostSummary } from "@components/posts/PostSummary";
 import { postModel } from "@utils/PostModel";
+import { Metadata } from "next";
 import Head from "next/head";
+import { notFound } from "next/navigation";
 import React from "react";
 
+export const dynamic = "force-static";
 export interface IProps {
     params: {
         tagName: string;
@@ -21,24 +24,25 @@ export default async function TagPage(props: IProps) {
     const postFragments = await postModel.getPostsByTag(tagName);
 
     if (!tag) {
-        return <div>No tag found {tagName}</div>;
+        notFound();
     }
     return (
         <Layout>
-            <Head>
-                <title>{`#${tag.name} Tag | Charron Developer Blog`}</title>
-                <meta
-                    name="description"
-                    content="Content tags for the Charron Developer Blog."
-                ></meta>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             <BigHeader>#{tag.slug}</BigHeader>
             {postFragments.map((fragment, i) => {
                 return <PostSummary post={fragment} key={i} />;
             })}
         </Layout>
     );
+}
+
+export function generateMetadata(props: IProps): Metadata {
+    const { tagName } = props.params;
+    const tag = postModel.getTag(tagName);
+    return {
+        title: `#${tag.name} Tag | Charron Developer Blog`,
+        description: `Posts tagged with "${tag.name}" for the Charron Developer Blog.`,
+    };
 }
 
 export function generateStaticParams() {

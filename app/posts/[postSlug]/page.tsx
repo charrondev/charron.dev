@@ -7,38 +7,49 @@ import { BigHeader } from "@components/BigHeader";
 import { Layout } from "@components/Layout";
 import { PostContent } from "@components/posts/PostContent";
 import { PostMeta } from "@components/posts/PostMeta";
-import { postModel } from "@utils/PostModel";
+import { IPost, postModel } from "@utils/PostModel";
+import { Metadata } from "next";
 import Head from "next/head";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-static";
+
 interface IProps {
     params: {
+        post: IPost;
         postSlug: string;
     };
 }
 
 export default async function PostPage(props: IProps) {
-    const post = await postModel.getPost(props.params.postSlug);
+    const { postSlug } = props.params;
+
+    const post = await postModel.getPost(postSlug);
     if (!post) {
         notFound();
     }
 
     return (
         <Layout>
-            <Head>
-                <title>{`${post.name} | Charron Developer Blog`}</title>
-                <meta name="description" content={post.seoSummary}></meta>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             <BigHeader after={<PostMeta post={post} />}>{post.name}</BigHeader>
             <PostContent>{post.content}</PostContent>
         </Layout>
     );
 }
 
-export function generateStaticParams() {
-    const allTags = postModel.getAllPostSlugs();
-    return allTags.map((tag) => {
-        return { slug: tag };
+export async function generateMetadata(props: IProps): Promise<Metadata> {
+    const { postSlug } = props.params;
+    const post = await postModel.getPost(postSlug);
+    return {
+        title: `${post.name} | Charron Developer Blog`,
+        description: post.seoSummary,
+    };
+}
+
+export async function generateStaticParams() {
+    const allSlugs = postModel.getAllPostSlugs();
+
+    return allSlugs.map((postSlug) => {
+        return { postSlug };
     });
 }

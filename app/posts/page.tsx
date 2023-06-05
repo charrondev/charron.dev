@@ -6,9 +6,12 @@
 import { BigHeader } from "@components/BigHeader";
 import { Layout } from "@components/Layout";
 import { PostSummary } from "@components/posts/PostSummary";
-import { IPostFragment, postModel } from "@utils/PostModel";
+import { postModel } from "@utils/PostModel";
+import { Metadata } from "next";
 import Head from "next/head";
 import React from "react";
+
+export const dynamic = "force-static";
 
 export default async function PostIndexPage() {
     const page = 1;
@@ -23,14 +26,17 @@ export default async function PostIndexPage() {
     }
     return (
         <Layout>
-            <Head>
-                <title>{title} | Charron Developer Blog</title>
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
             <BigHeader>{title}</BigHeader>
             {postFragments.map((fragment, i) => {
                 return <PostSummary post={fragment} key={i} />;
             })}
         </Layout>
     );
+}
+
+export function generateMetadata(): Metadata {
+    return {
+        title: `Recent Posts | Charron Developer Blog`,
+        description: `Recent posts from the Charron Developer Blog.`,
+    };
 }
