@@ -5,27 +5,31 @@
 
 "use client";
 
-import Logo from "@logos/charrondev-dark.svg";
+import LogoLight from "@logos/charrondev-light.svg";
+import LogoDark from "@logos/charrondev-dark.svg";
 import classNames from "classnames";
-import Head from "next/head";
 import Link from "next/link";
 import { useState } from "react";
-import styles from "./Layout.module.scss";
+import classes from "./Layout.module.scss";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@components/ThemeToggle";
 
 interface IProps {
     panel?: React.ReactNode;
     children: React.ReactNode;
+    maxWidth?: number;
+    overlayHeader?: boolean;
 }
 
-export function Layout({ children }: IProps) {
+export function Layout(props: IProps) {
+    const { children, maxWidth, overlayHeader } = props;
     const [isOpen, setIsOpen] = useState(false);
 
     const nav = (
         <nav
             className={classNames(
-                styles.headerNav,
-                isOpen && styles.headerNavOpen
+                classes.headerNav,
+                isOpen && classes.headerNavOpen
             )}
         >
             <NavLink href="/posts">Posts</NavLink>
@@ -34,22 +38,44 @@ export function Layout({ children }: IProps) {
             <NavLink href="https://github.com/charrondev">GitHub</NavLink>
         </nav>
     );
+
     return (
-        <div className={styles.root}>
-            <header className={styles.header}>
-                <div className={styles.headerContainer}>
+        <div
+            className={classNames(
+                classes.root,
+                overlayHeader && classes.overlayHeader
+            )}
+            style={
+                {
+                    "--width": `${maxWidth ?? 1000}px`,
+                } as any
+            }
+        >
+            <header className={classes.header}>
+                <div className={classes.headerContainer}>
                     <Link
                         href="/"
                         title="Charron.dev logo."
                         aria-label="Logo spelling out charron.dev"
-                        className={styles.logoLink}
+                        className={classes.logoLink}
                     >
-                        <Logo className={styles.logo} />
+                        <LogoDark
+                            className={classNames(
+                                classes.logo,
+                                classes.logoDark
+                            )}
+                        />
+                        <LogoLight
+                            className={classNames(
+                                classes.logo,
+                                classes.logoLight
+                            )}
+                        />
                     </Link>
-                    <span className={styles.hamburgerWrap}>
+                    <span className={classes.hamburgerWrap}>
                         <Hamburger
                             className={
-                                isOpen ? styles.hamburgerOpen : undefined
+                                isOpen ? classes.hamburgerOpen : undefined
                             }
                             onClick={() => {
                                 if (isOpen) {
@@ -61,9 +87,10 @@ export function Layout({ children }: IProps) {
                         />
                     </span>
                     {nav}
+                    <ThemeToggle />
                 </div>
             </header>
-            <main className={styles.main}>{children}</main>
+            <main className={classes.main}>{children}</main>
         </div>
     );
 }
@@ -75,11 +102,11 @@ function Hamburger(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
             title="Toggle Navigation"
             aria-label="Toggle Navigation"
             {...props}
-            className={classNames(styles.hamburger, props.className)}
+            className={classNames(classes.hamburger, props.className)}
         >
-            <span className={styles.hamburgerLine}></span>
-            <span className={styles.hamburgerLine}></span>
-            <span className={styles.hamburgerLine}></span>
+            <span className={classes.hamburgerLine}></span>
+            <span className={classes.hamburgerLine}></span>
+            <span className={classes.hamburgerLine}></span>
         </button>
     );
 }
@@ -92,16 +119,16 @@ interface INavLinkProps {
 const NavLink = ({ href, children }: INavLinkProps) => {
     const pathname = usePathname();
 
-    const classes = [styles.headerNavLink];
+    const appliedClasses = [classes.headerNavLink];
     const isCurrent = pathname?.startsWith(href);
     if (isCurrent) {
-        classes.push(styles.activeNavLink);
+        appliedClasses.push(classes.activeNavLink);
     }
 
     return (
         <Link
             href={href}
-            className={classes.join(" ")}
+            className={appliedClasses.join(" ")}
             aria-current={isCurrent ? "page" : undefined}
         >
             {children}

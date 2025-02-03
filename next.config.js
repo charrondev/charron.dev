@@ -3,24 +3,10 @@
  * @license Proprietary
  */
 
-// const withMDX = require('@next/mdx')({
-//     extension: /\.mdx?$/,
-//     options: {
-//       // If you use remark-gfm, you'll need to use next.config.mjs
-//       // as the package is ESM only
-//       // https://github.com/remarkjs/remark-gfm#install
-//       remarkPlugins: [],
-//       rehypePlugins: [],
-//       // If you use `MDXProvider`, uncomment the following line.
-//       // providerImportSource: "@mdx-js/react",
-//     },
-//   });
-
 /**
  * @type {import("next").NextConfig} config
  */
 const config = {
-    output: "export",
     experimental: {
         optimizeCss: true,
     },
@@ -40,6 +26,9 @@ const config = {
                     loader: "@svgr/webpack",
                     options: {
                         dimensions: false,
+                        replaceAttrValues: {
+                            "#000": "currentColor",
+                        },
                     },
                 },
             ],
@@ -49,6 +38,10 @@ const config = {
             type: "asset/source",
         });
         return config;
+    },
+    images: {
+        loader: "custom",
+        loaderFile: "./cloudflareImageLoader.ts",
     },
     reactStrictMode: true,
     swcMinify: true,

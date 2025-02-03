@@ -9,10 +9,7 @@ import { PostContent } from "@components/posts/PostContent";
 import { PostMeta } from "@components/posts/PostMeta";
 import { IPost, postModel } from "@utils/PostModel";
 import { Metadata } from "next";
-import Head from "next/head";
 import { notFound } from "next/navigation";
-
-export const dynamic = "force-static";
 
 interface IProps {
     params: {
@@ -44,12 +41,4 @@ export async function generateMetadata(props: IProps): Promise<Metadata> {
         title: `${post.name} | Charron Developer Blog`,
         description: post.seoSummary,
     };
-}
-
-export async function generateStaticParams() {
-    const allSlugs = postModel.getAllPostSlugs();
-
-    return allSlugs.map((postSlug) => {
-        return { postSlug };
-    });
 }

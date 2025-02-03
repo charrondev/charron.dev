@@ -83,7 +83,7 @@
         /* Code blocks */
         pre[class*="language-"] {
             color: #fff;
-            box-shadow: 0 5px 15px 0 rgba(#282a36, 0.6);
+            // box-shadow: 0 5px 15px 0 rgba(#282a36, 0.6);
             padding: 1em;
             margin: 1.5em 0;
             overflow: auto;
@@ -92,7 +92,8 @@
 
         & :not(pre) > code[class*="language-"],
         & pre[class*="language-"] {
-            background: #282a36;
+            background: var(--color-bg-front);
+            border: 1px solid var(--color-border);
         }
 
         /* Inline code */

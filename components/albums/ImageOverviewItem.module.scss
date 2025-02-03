@@ -1,0 +1,109 @@
+
+.imageContainer {
+    position: relative;
+
+    &[data-draggable="true"] {
+        cursor: pointer;
+    }
+}
+
+
+.imageCheckboxContainer {
+    position: absolute;
+    z-index: 3;
+    top: 12px;
+    right: 12px;
+    background: var(--color-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 6px;
+    opacity: 0;
+
+    &:hover, &:focus, &:focus-within, [data-selected="true"] & {
+        opacity: 1;
+    }
+
+    [data-selected="true"] & {
+        opacity: 1;
+    }
+}
+
+.imageCheckbox {
+
+}
+
+.image.image {
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow);
+
+    &:hover, &:focus {
+        transform: scale(1.01) translateZ(0);
+        z-index: 2;
+
+        & + .imageCheckboxContainer {
+            opacity: 1;
+        }
+    }
+
+    [data-selected="true"] & {
+        box-shadow: 0 0 0 2px var(--color-secondary), var(--shadow);
+    }
+}
+
+.thumbnailRow {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.thumbnailImage {
+    flex: 1;
+    min-width: 400px;
+    flex: 400px;
+    flex-grow: 4;
+
+    &:hover, &:focus {
+        transform: scale(1.005);
+    }
+}
+
+.thumbnailDetails {
+    flex: 200px;
+    flex-grow: 1;
+
+    .thumbnailRow & {
+        padding: 12px 0;
+    }
+}
+
+.thumbnailTags {
+    margin-bottom: 12px;
+}
+
+.thumbnailTitle {
+
+    a {
+        text-decoration: none;
+        color: var(--color-text) !important;
+    }
+}
+
+.thumbnailDescription {
+    line-height: 1.4;
+}
+
+.thumbnailAlert {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+
+    svg {
+        height: 1em;
+        width: 1em;
+        color: var(--color-primary);
+    }
+}

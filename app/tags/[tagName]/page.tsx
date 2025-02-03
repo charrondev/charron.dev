@@ -7,11 +7,8 @@ import { Layout } from "@components/Layout";
 import { PostSummary } from "@components/posts/PostSummary";
 import { postModel } from "@utils/PostModel";
 import { Metadata } from "next";
-import Head from "next/head";
 import { notFound } from "next/navigation";
-import React from "react";
 
-export const dynamic = "force-static";
 export interface IProps {
     params: {
         tagName: string;
@@ -43,11 +40,4 @@ export function generateMetadata(props: IProps): Metadata {
         title: `#${tag.name} Tag | Charron Developer Blog`,
         description: `Posts tagged with "${tag.name}" for the Charron Developer Blog.`,
     };
-}
-
-export function generateStaticParams() {
-    const allTags = postModel.getTags();
-    return allTags.map((tag) => {
-        return { tagName: tag.slug };
-    });
 }

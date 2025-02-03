@@ -24,6 +24,7 @@
     margin: 3px;
     text-transform: uppercase;
     font-weight: 600;
+    text-decoration: none;
 }
 
 @media (max-width: 600px) {

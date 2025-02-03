@@ -1,0 +1,150 @@
+@import "@radix-ui/colors/slate.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/indigo.css";
+@import "@radix-ui/colors/crimson.css";
+@import "@radix-ui/colors/slateDark.css";
+@import "@radix-ui/colors/mauveDark.css";
+@import "@radix-ui/colors/indigoDark.css";
+@import "@radix-ui/colors/crimsonDark.css";
+
+:root,
+.dark-theme {
+    --color-text: var(--mauve12);
+    --color-bg: var(--mauve1);
+    --color-section: var(--indigo12);
+    --color-section-contrast: var(--indigo1);
+    --color-section-highlight: var(--indigo5);
+    --color-border: var(--indigo11);
+    --color-primary-fade: var(--crimson-3);
+    --color-primary: var(--crimson9);
+    --color-secondary: var(--indigo9);
+    --color-secondary-fade: var(--indigo3);
+    --color-secondary-edge: var(--indigo7);
+    --color-meta: hsl(206deg 7.18% 28.91%);
+
+    // Forms
+    --form-bg-color: var(--indigo3);
+    --form-bg-active-color: var(--indigo4);
+    --form-placeholder-color: var(--indigo6);
+    --form-fg-color: var(--indigo12);
+    --form-border-color: var(--indigo7);
+
+    // https://www.joshwcomeau.com/shadow-palette/
+    --shadow-color: 0deg 0% 0%;
+    --shadow: 0.1px 0.5px 0.6px hsl(var(--shadow-color) / 0.07),
+        0.2px 2px 2.5px -0.5px hsl(var(--shadow-color) / 0.09),
+        0.5px 4.5px 5.7px -1px hsl(var(--shadow-color) / 0.11),
+        1.2px 10.3px 13.1px -1.5px hsl(var(--shadow-color) / 0.13);
+    // --shadow: 0 4px 2px rgba(0, 0, 0, 0.1), 0 10px 6px rgba(0, 0, 0, 0.2),
+    // 0 30px 20px rgba(0, 0, 0, 0.3);
+    --shadow-filter: drop-shadow(
+            0.1px 0.5px 0.5px hsl(var(--shadow-color) / 0.41)
+        )
+        drop-shadow(0.2px 1.4px 1.5px -1px hsl(var(--shadow-color) / 0.37))
+        drop-shadow(0.4px 3.8px 4px -2px hsl(var(--shadow-color) / 0.33))
+        drop-shadow(0.1px 9.7px 10.2px -3px hsl(var(--shadow-color) / 0.3));
+
+    --color-blur-bg: rgba(255, 255, 255, 0.4);
+    --color-blur-bg-active: rgba(0, 0, 0, 0.1);
+    --color-blur-border: rgba(0, 0, 0, 0.2);
+    --color-blur-fg: var(--mauve12);
+}
+
+.dark-theme {
+    --color-section: var(--mauve3);
+    --color-section-contrast: var(--mauve12);
+    --color-section-highlight: var(--indigo11);
+    --color-meta: hsl(208, 49%, 85%);
+    --color-secondary: var(--indigo10);
+    --color-secondary-fade: var(--indigo1);
+    --color-secondary-edge: var(--indigo7);
+    --shadow-filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.1))
+        drop-shadow(0 10px 6px rgba(0, 0, 0, 0.2))
+        drop-shadow(0 30px 20px rgba(0, 0, 0, 0.3));
+
+    // Forms
+    --form-bg-color: var(--mauve3);
+    --form-bg-active-color: var(--mauve4);
+    --form-placeholder-color: var(--mauve11);
+    --form-fg-color: #fff;
+    --form-border-color: var(--mauve3);
+
+    --color-blur-bg: rgba(0, 0, 0, 0.6);
+    --color-blur-bg-active: rgba(255, 255, 255, 0.05);
+    --color-blur-border: rgba(255, 255, 255, 0.2);
+    --color-blur-fg: #fff;
+}
+
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 18px;
+    color: var(--color-text);
+    min-height: 100%;
+    line-height: 1;
+    background: var(--color-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 0.5em;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 0.5em;
+}
+
+button {
+    all: unset;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: underline !important;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+#__next {
+    min-height: 100%;
+}
+
+a {
+    color: var(--color-secondary);
+}
+
+a:hover,
+a:focus,
+a:active,
+a:visited {
+    color: var(--color-secondary);
+    text-decoration: underline;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}

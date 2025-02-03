@@ -1,0 +1,101 @@
+.strip {
+    display: inline-flex;
+    flex-direction: row;
+    height: 84px;
+    min-width: 0; // Needed to prevent from the strip from growing too large.
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+}
+
+.stripItemsWrapper {
+    flex: 1 0 0;
+    min-width: 0;
+
+}
+
+.stripItems {
+    box-shadow: var(--shadow);
+    background: var(--color-blur-bg);
+    border-radius: 4px;
+
+    // Paddings so the focus state doesn't get cut off by the overflow.
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+
+    height: 100%;
+    display: inline-flex;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    align-items: stretch;
+    min-width: 0;
+
+    &::-webkit-scrollbar {
+        height: 4px;
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+
+        border: 2px solid transparent;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 2px;
+
+    }
+}
+
+.stripArrow {
+    background-color: transparent;
+    cursor: pointer;
+    color: #fff;
+    z-index: 1;
+    position: relative;
+    border: 1px solid transparent;
+
+    &:focus, &:hover, &:active {
+        background: var(--color-blur-bg-active);
+        border-color: var(--color-blur-border);
+    }
+
+    &:focus-visible {
+        outline: -webkit-focus-ring-color auto 1px;
+    }
+
+    svg {
+        height: 24px;
+        width: 24px;
+    }
+}
+
+.stripItem {
+    height: 100%;
+    width: auto;
+    transform: none !important;
+    border-radius: 0 !important;
+    filter: none !important;
+
+    img {
+        transform: none !important;
+        border-radius: 0 !important;
+        filter: none !important;
+    }
+}
+
+.currentStripItem {
+    position: relative;
+    box-shadow: 0 0 0 2px var(--color-secondary);
+    outline: none;
+    z-index: 10 !important;
+
+    &:focus-visible {
+        box-shadow: 0 0 0 2px var(--color-secondary), 0 0 0 4px #fff;
+    }
+}

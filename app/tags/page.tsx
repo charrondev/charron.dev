@@ -7,9 +7,6 @@ import { Layout } from "@components/Layout";
 import { Tags } from "@components/Tags";
 import { postModel } from "@utils/PostModel";
 import { Metadata } from "next";
-import Head from "next/head";
-
-export const dynamic = "force-static";
 
 export default function TagsPage() {
     const tags = postModel.getTags();

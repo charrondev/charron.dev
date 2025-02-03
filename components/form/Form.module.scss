@@ -1,0 +1,296 @@
+
+.inputGroup {
+    margin-top: 12px;
+    position: relative;
+    border-radius: 4px;
+    background-color: var(--form-bg-color);
+    color: var(--form-fg-color);
+    width: 100%;
+    border: 1px solid var(--form-border-color);
+
+    &:first-of-type {
+        margin-top: 0;
+    }
+}
+
+
+.inputGroupDark.inputGroupDark, :global(.dark-theme) .inputGroupDark.inputGroup {
+    --form-bg-color: rgba(0, 0, 0, 0.5);
+    --form-bg-active-color: rgba(0, 0, 0, 0.2);
+    border: none;
+}
+
+.label {
+    font-weight: 600;
+    display: block;
+    color: var(--form-fg-color);
+    opacity: 0.85;
+    margin-bottom: 8px;
+    font-size: 12px;
+    padding: 9px 12px;
+    padding-bottom: 0;
+}
+
+.input {
+    display: block;
+    appearance: none;
+    resize: none;
+    width: 100%;
+    border-radius: 4px;
+    background-color: transparent;
+    font-family: inherit;
+    border: none;
+    color: var(--form-fg-color);
+    padding: 0;
+    padding: 9px 12px;
+
+    &::-webkit-calendar-picker-indicator,
+    &::-webkit-list-button {
+        display: none !important;
+    }
+
+    &::placeholder {
+        color: var(--form-placeholder-color);
+    }
+
+    &:focus,
+    &:active {
+        outline: none;
+        background-color: var(--form-bg-active-color);
+        border-color: transparent;
+    }
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 1px var(--color-secondary);
+    }
+
+    :global(.dark-theme) & {
+
+        box-shadow: var(--shadow);
+
+        &:focus,
+        &:active {
+            background-color: var(--form-bg-active-color);
+        }
+
+        &:focus-visible {
+            box-shadow: 0 0 0 1px var(--color-secondary);
+        }
+    }
+
+    &.mutliline {
+        min-height: 80px;
+    }
+}
+
+.dropdownContent {
+    z-index: 10;
+    min-width: 220px;
+    background-color: var(--form-bg-color);
+    border-radius: 6px;
+    padding: 5px;
+    box-shadow: 0px 10px 38px -10px rgba(22, 23, 24, 0.35),
+        0px 10px 20px -15px rgba(22, 23, 24, 0.2);
+    animation-duration: 400ms;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+    transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+    border: 1px solid var(--mauve5);
+
+    &[data-side="top"] {
+        animation-name: slideDownAndFade;
+    }
+    &[data-side="right"] {
+        animation-name: slideLeftAndFade;
+    }
+    &[data-side="bottom"] {
+        animation-name: slideUpAndFade;
+    }
+    &[data-side="left"] {
+        animation-name: slideRightAndFade;
+    }
+
+    & [role*="menuitem"] {
+        font-size: 14px;
+        line-height: 1;
+        color: var(--violet11);
+        border-radius: 3px;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+        padding: 8px 8px;
+        position: relative;
+        user-select: none;
+        outline: none;
+        cursor: pointer;
+
+        &:hover, &:active, &:focus {
+            background-color: var(--mauve6);
+        }
+
+        &:focus-visible {
+            box-shadow: 0 0 0 2px var(--color-secondary);
+        }
+    }
+
+    & [role="separator"] {
+        height: 1px;
+        background-color: var(--mauve6);
+        margin: 4px;
+    }
+
+    .DropdownMenuItemIndicator {
+        position: absolute;
+        left: 0;
+        width: 25px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .RightSlot {
+        margin-left: auto;
+        padding-left: 20px;
+        color: var(--mauve11);
+      }
+      [data-highlighted] > .RightSlot {
+        color: white;
+      }
+}
+
+@keyframes slideUpAndFade {
+    from {
+        opacity: 0;
+        transform: translateY(2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRightAndFade {
+    from {
+        opacity: 0;
+        transform: translateX(-2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDownAndFade {
+    from {
+        opacity: 0;
+        transform: translateY(-2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeftAndFade {
+    from {
+        opacity: 0;
+        transform: translateX(2px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toggleGroup {
+    display: inline-flex;
+    background-color: var(--indigo2);
+    border-radius: 4px;
+    border: 1px solid var(--indigo6);
+}
+
+.toggleItem {
+    height: 35px;
+    width: 35px;
+    display: flex;
+    font-size: 15px;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--mauve12);
+
+
+    &:hover {
+        background: var(--indigo3);
+    }
+
+
+    &[data-state="on"] {
+        background: var(--indigo3);
+        color: var(--indigo9);
+    }
+
+    &:focus-visible {
+        box-shadow: 0 0 0 2px var(--indigo9);
+        position: relative;
+        z-index: 1;
+    }
+
+    &:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
+
+    &:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
+}
+
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+}
+
+.checkboxRoot {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    border: 1px solid var(--indigo9);
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover, &:focus, &[data-state="checked"] {
+        background: var(--indigo6);
+        border-color: var(--indigo9);
+    }
+
+    &[data-state="checked"] {
+        background: var(--indigo9);
+    }
+    // box-shadow: 0 2px 10px var(--blackA7);
+}
+
+.checkboxIndicator {
+    color: #fff;
+    svg {
+        height: 14px;
+        width: 14px;
+    }
+}
+
+.checkboxLabel {
+    color: var(--color-text);
+    font-size: 14px;
+    padding-left: 12px;
+    line-height: 1;
+}

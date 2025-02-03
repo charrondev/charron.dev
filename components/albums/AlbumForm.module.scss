@@ -1,0 +1,138 @@
+.filterRow {
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.flexSpacer {
+    flex: 1;
+    display: block;
+}
+
+.imageGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+}
+
+.imageRows {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.toolbar {
+    position: sticky;
+    width: fit-content;
+    margin: 0 auto;
+    margin-bottom: 24px;
+    top: 96px;
+    z-index: 20;
+}
+
+.banner {
+    position: relative;
+    padding-bottom: 24px;
+    padding-top: 120px;
+    padding-bottom: 40px;
+}
+
+.bannerBg,
+.bannerOverlay {
+    position: absolute;
+    object-fit: cover;
+    left: 50%;
+    top: -24px;
+    width: 0;
+    width: 100vw;
+    transform: translateX(-50%);
+    height: calc(100% + 48px);
+    min-height: 50vh;
+}
+
+.bannerBg {
+    filter: brightness(0.85);
+}
+
+.bannerOverlay {
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.2) 60%,
+        rgba(255, 255, 255, 0.8) 90%,
+        var(--color-bg)
+    );
+
+    :global(.dark-theme) & {
+        background: linear-gradient(
+            to bottom,
+            hsla(246, 6.0%, 9.0%, 0) 0%,
+            hsla(246, 6.0%, 9.0%, 0.2) 60%,
+            hsla(246, 6.0%, 9.0%, 0.9) 90%,
+            hsla(246, 6.0%, 9.0%, 0.97) 95%,
+            var(--color-bg)
+        );
+    }
+}
+
+.albumTitle.albumTitle {
+    margin-bottom: 24px;
+
+    border: none;
+    background: transparent;
+
+    label {
+        width: auto;
+        margin-right: 12px;
+        background: none;
+    }
+
+    input {
+        text-align: center;
+        width: 100%;
+        max-width: 700px;
+        border-radius: 0;
+        margin: 0 auto;
+        font-size: 42px;
+        box-shadow: none;
+        background: transparent;
+        filter: var(--shadow-filter);
+        border: none;
+        border-bottom: 2px solid transparent;
+
+        color: #fff;
+
+        &:focus {
+            box-shadow: none;
+            border-color: #fff;
+        }
+
+        &::placeholder {
+            color: var(--mauve9);
+        }
+    }
+
+    button {
+        height: 36px;
+        width: 36px;
+        align-items: center;
+        justify-content: center;
+        display: inline-flex;
+        margin-left: 24px;
+        margin-right: 4px;
+        border-radius: 6px;
+
+        &:hover,
+        &:active,
+        &:focus {
+            background-color: var(--mauve6);
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 2px var(--color-secondary);
+        }
+    }
+}

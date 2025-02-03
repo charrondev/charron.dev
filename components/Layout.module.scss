@@ -4,18 +4,57 @@
  */
 
 .root {
-    --width: 1000px;
-    --shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    --width: 1200px;
     height: 100%;
 }
 
+.overlayHeader {
+    // padding-top: 80px;
+}
+
 .header {
-    color: var(--color-text);
+    --bg: var(--color-section);
+    --fg: var(--color-section-contrast);
     border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
-    background: #fff;
-    z-index: 1;
+    background: var(--bg);
+    color: var(--fg);
+    z-index: 20;
+
+    .overlayHeader & {
+        --bg: var(--color-blur-bg);
+        --fg: var(--color-blur-fg);
+        position: fixed;
+
+        backdrop-filter: blur(10px);
+        width: 100vw;
+        border-bottom: none;
+    }
+}
+
+.logoDark {
+    display: none;
+}
+
+:global(.light-theme) .overlayHeader {
+    .logoDark {
+        display: inline-block;
+    }
+
+    .logoLight {
+        display: none;
+    }
+}
+
+:global(.dark-theme) .overlayHeader {
+    .logoLight {
+        display: inline-block;
+    }
+
+    .logoDark {
+        display: none;
+    }
 }
 
 .headerContainer {
@@ -39,7 +78,7 @@
         position: absolute;
         opacity: 1;
         opacity: 0;
-        background: #fff;
+        background: var(--bg);
         top: 80%;
         left: 0;
         padding-left: 8px;
@@ -60,12 +99,38 @@
     letter-spacing: 1px;
     font-size: 16px;
     padding-top: 18px;
-    color: var(--color-text);
+    color: var(--fg);
     text-decoration: none !important;
 }
 
 .activeNavLink.activeNavLink {
-    color: var(--color-primary);
+    color: var(--color-section-highlight);
+}
+
+.themeToggle {
+    cursor: pointer;
+    padding: 7px 8px 6px;
+    border-radius: 4px;
+    color: var(--fg);
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: var(--color-section-highlight);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &:focus-visible {
+        box-shadow: 0 0 0 2px var(--fg);
+    }
+}
+
+:global(.dark-theme) .themeToggle {
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
 }
 
 .logoLink {
@@ -86,7 +151,7 @@
     max-width: var(--width);
     margin: 0 auto;
     padding: 24px;
-    background: #fff;
+    background: var(--bg);
     min-height: 100%;
 }
 

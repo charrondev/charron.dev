@@ -1,13 +1,19 @@
+import { cookies } from "next/headers";
 import Script from "next/script";
-import "./global.css";
+import "./global.scss";
 
 interface IProps {
     children: React.ReactNode;
 }
 
-export default function RootLayout(props: IProps) {
+export default function RootLayoutImpl(props: IProps) {
+    const theme = cookies().get("theme")?.value ?? "dark";
+
+    // Defaults to dark mode.
+    const themeClass = theme === "light" ? "light-theme" : "dark-theme";
+
     return (
-        <html lang="en">
+        <html lang="en" className={themeClass}>
             <head>
                 <link rel="icon" href="/favicon.ico" />
                 <title>Charron Developer Blog</title>
@@ -23,7 +29,7 @@ export default function RootLayout(props: IProps) {
                 data-domain="charron.dev"
                 src="https://stats.charron.dev/js/plausible.js"
             />
-            <body>{props.children}</body>
+            <body className={themeClass}>{props.children}</body>
         </html>
     );
 }
