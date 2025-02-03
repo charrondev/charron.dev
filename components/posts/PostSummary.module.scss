@@ -1,6 +1,42 @@
 .root {
-    border-bottom: 1px solid var(--color-border);
-    padding: 24px 0;
+    // border-bottom: 1px solid var(--color-border);
+    padding: 18px 0;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+
+    &:visited {
+        color: inherit;
+    }
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 18px;
+        bottom: 18px;
+        border-top-left-radius: 24px;
+        border-bottom-left-radius: 24px;
+        left: -24px;
+        width: 6px;
+        background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+        opacity: 0;
+        transition: all 0.2s ease;
+    }
+
+    &:hover, &:focus {
+        text-decoration: none !important;
+        color: inherit;
+
+        & h2 {
+            text-decoration: underline;
+        }
+
+        &:before {
+            opacity: 1;
+        }
+    }
 }
 
 .root:last-child {
@@ -8,11 +44,18 @@
 }
 
 .tags {
-    margin-bottom: 12px;
+    // margin-bottom: 12px;
+}
+
+.dateMeta {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: var(--color-meta);
+    display: block;
 }
 
 .title {
-    margin-bottom: 12px;
+    margin-bottom: 4px;
 
     a {
         color: var(--color-text) !important;
@@ -21,7 +64,7 @@
 }
 
 .excerpt {
-    margin-bottom: 12px;
+    // margin-bottom: 4px;
 
     :global {
         h1,

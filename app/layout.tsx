@@ -6,8 +6,8 @@ interface IProps {
     children: React.ReactNode;
 }
 
-export default function RootLayoutImpl(props: IProps) {
-    const theme = cookies().get("theme")?.value ?? "dark";
+export default async function RootLayoutImpl(props: IProps) {
+    const theme = (await cookies()).get("theme")?.value ?? "dark";
 
     // Defaults to dark mode.
     const themeClass = theme === "light" ? "light-theme" : "dark-theme";

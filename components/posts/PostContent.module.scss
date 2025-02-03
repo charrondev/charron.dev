@@ -60,8 +60,9 @@
 
         code[class*="language-"],
         pre[class*="language-"] {
-            color: #f8f8f2;
-            background: none;
+            display: block;
+            background: var(--color-code-bg);
+            color: var(--color-code-fg);
             text-shadow: 0 1px rgba(0, 0, 0, 0.3);
             font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono",
                 monospace;
@@ -82,18 +83,16 @@
 
         /* Code blocks */
         pre[class*="language-"] {
-            color: #fff;
-            // box-shadow: 0 5px 15px 0 rgba(#282a36, 0.6);
             padding: 1em;
-            margin: 1.5em 0;
+            margin-bottom: 1.5em;
             overflow: auto;
             border-radius: 0.3em;
         }
 
         & :not(pre) > code[class*="language-"],
         & pre[class*="language-"] {
-            background: var(--color-bg-front);
-            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.3);
+            // border: 1px solid var(--color-border);
         }
 
         /* Inline code */

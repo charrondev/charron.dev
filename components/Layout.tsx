@@ -29,7 +29,7 @@ export function Layout(props: IProps) {
         <nav
             className={classNames(
                 classes.headerNav,
-                isOpen && classes.headerNavOpen
+                isOpen && classes.headerNavOpen,
             )}
         >
             <NavLink href="/posts">Posts</NavLink>
@@ -43,11 +43,11 @@ export function Layout(props: IProps) {
         <div
             className={classNames(
                 classes.root,
-                overlayHeader && classes.overlayHeader
+                overlayHeader && classes.overlayHeader,
             )}
             style={
                 {
-                    "--width": `${maxWidth ?? 1000}px`,
+                    "--width": `${maxWidth ?? 800}px`,
                 } as any
             }
         >
@@ -62,13 +62,13 @@ export function Layout(props: IProps) {
                         <LogoDark
                             className={classNames(
                                 classes.logo,
-                                classes.logoDark
+                                classes.logoDark,
                             )}
                         />
                         <LogoLight
                             className={classNames(
                                 classes.logo,
-                                classes.logoLight
+                                classes.logoLight,
                             )}
                         />
                     </Link>

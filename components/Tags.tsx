@@ -20,9 +20,10 @@ export function Tag(props: ITag) {
 interface ITagsProps {
     tags: ITag[];
     className?: string;
+    readonly?: boolean;
 }
 
-export function Tags({ tags, className }: ITagsProps) {
+export function Tags({ tags, className, readonly }: ITagsProps) {
     if (tags.length === 0) {
         return <></>;
     }
@@ -30,7 +31,13 @@ export function Tags({ tags, className }: ITagsProps) {
     return (
         <div className={classNames(styles.tags, className)}>
             {tags.map((tag, i) => {
-                return <Tag {...tag} key={i} />;
+                return readonly ? (
+                    <span className={styles.tag} key={i}>
+                        {tag.name}
+                    </span>
+                ) : (
+                    <Tag {...tag} key={i} />
+                );
             })}
         </div>
     );

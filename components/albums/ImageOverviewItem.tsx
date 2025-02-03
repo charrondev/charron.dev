@@ -1,14 +1,14 @@
 import { Tags } from "@components/Tags";
 import { ToolTip } from "@components/Tooltip";
-import { useAlbumContext } from "@components/albums/AlbumContext";
+import {
+    useAlbumContext,
+    type ProgressUpload,
+} from "@components/albums/AlbumContext";
 import {
     CloudflareImage,
     CloudflareImageLink,
 } from "@components/albums/CloudflareImage";
-import {
-    ImageUpload,
-    ImageUploadProgress,
-} from "@components/albums/ImageUploadProgress";
+import { ImageUploadProgress } from "@components/albums/ImageUploadProgress";
 import { CheckBox } from "@components/form/CheckBox";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
@@ -29,7 +29,7 @@ type IProps = {
           }
         | {
               image?: never;
-              uploadImage: ImageUpload;
+              uploadImage: ProgressUpload;
           }
     );
 
@@ -45,7 +45,7 @@ export const ImageOverviewItem = React.forwardRef<HTMLDivElement, IProps>(
         } = props;
         const { album, editor, route } = useAlbumContext();
         const isSelected = editor.selectedImageIDs.includes(
-            image?.imageID ?? ""
+            image?.imageID ?? "",
         );
 
         const rootProps = {
@@ -74,7 +74,7 @@ export const ImageOverviewItem = React.forwardRef<HTMLDivElement, IProps>(
             <div
                 className={classNames(
                     classes.imageContainer,
-                    displayMode === "list" && classes.thumbnailImage
+                    displayMode === "list" && classes.thumbnailImage,
                 )}
                 data-draggable={draggable}
                 data-selected={isSelected}
@@ -160,5 +160,5 @@ export const ImageOverviewItem = React.forwardRef<HTMLDivElement, IProps>(
                 </div>
             );
         }
-    }
+    },
 );

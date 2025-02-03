@@ -1,6 +1,7 @@
 ---
 name: Self-Hosting Analytics with Plausible
 slug: self-hosting-analytics-with-plausible
+excerpt: Exploring self-hosting optional for privacy-respecting analytics.
 tags:
     - self-hosting
     - plausible
@@ -18,12 +19,12 @@ Unfortunately most cloud-hosted options (that aren't google analytics)
 are relatively pricy for what are essentially low traffic sites. After a bit of evalution
 the best options seemed to be:
 
--   [Fathom (cloud)](https://usefathom.com/pricing) - \$14/month
--   [Fathom (self-hosted)](https://github.com/usefathom/fathom) - ~\$5/month
--   [Matamo (cloud)](https://matomo.org/pricing/) - \$30/month
--   [Matamo (self-hosted)](https://github.com/matomo-org/matomo) - \$10/month (greater server requirements)
--   [Plausible (cloud)](https://plausible.io/) - \$6/month
--   [Plausible (self-hosted)](https://github.com/plausible/analytics) - \$5/month
+- [Fathom (cloud)](https://usefathom.com/pricing) - \$14/month
+- [Fathom (self-hosted)](https://github.com/usefathom/fathom) - ~\$5/month
+- [Matamo (cloud)](https://matomo.org/pricing/) - \$30/month
+- [Matamo (self-hosted)](https://github.com/matomo-org/matomo) - \$10/month (greater server requirements)
+- [Plausible (cloud)](https://plausible.io/) - \$6/month
+- [Plausible (self-hosted)](https://github.com/plausible/analytics) - \$5/month
 
 I ruled out the cloud hosted options for now, mostly because I wanted to be able to try a few of these out
 quickly, without giving out any payment information.
@@ -38,10 +39,10 @@ That left me with Fathom & Plausible.
 I got Fathom up and running quick enough (they have 1-click digital ocean droplet),
 but after setting it up, but it seemed to have a few major flaws:
 
--   The analytics dashboard was completely public, with no UI I could find to:
-    -   Restrict it.
-    -   Sign in.
--   I passed through the initial setup, but I couldn't find how to see my siteID or script location again.
+- The analytics dashboard was completely public, with no UI I could find to:
+    - Restrict it.
+    - Sign in.
+- I passed through the initial setup, but I couldn't find how to see my siteID or script location again.
 
 This was enough friction that I tore down the instance and figured I'd give Plausible a shot.
 
@@ -57,11 +58,11 @@ You should be able to use any other hosting provider as long as they support.
 
 I created a new project, and setup a droplet with the following configuration:
 
--   1 vCPU
--   1GB RAM / 25 GB Disk
--   Droplet - Docker 19.x on Ubuntu 20.04 from the Marketplace.
--   IPv6 & monitoring enabled.
--   Attached my SSH key to the droplet.
+- 1 vCPU
+- 1GB RAM / 25 GB Disk
+- Droplet - Docker 19.x on Ubuntu 20.04 from the Marketplace.
+- IPv6 & monitoring enabled.
+- Attached my SSH key to the droplet.
 
 Once the droplet was spun up, I ssh'd into it.
 
@@ -100,9 +101,9 @@ I opted to use cloudflare as my reverse proxy and handle https.
 
 Here I:
 
--   Update Plausible to run on port 80.
--   Configure my DNS (run through cloudflare) to point to the droplet.
--   Block access on port 80 to go only go through cloudflare.
+- Update Plausible to run on port 80.
+- Configure my DNS (run through cloudflare) to point to the droplet.
+- Block access on port 80 to go only go through cloudflare.
 
 ### Update Plausible to run on port 80
 
@@ -120,8 +121,8 @@ Here I:
 
 ### Configuring DNS
 
--   Go to cloudflare DNS.
--   Add 2 records.
+- Go to cloudflare DNS.
+- Add 2 records.
 
 ```shell
 A stats DROPLET_IPV4

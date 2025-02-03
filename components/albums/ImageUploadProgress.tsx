@@ -1,4 +1,3 @@
-import { ProgressEventEmitter } from "@utils/cloudflareClient";
 import classes from "./Image.module.scss";
 import { useEffect, useMemo, useState } from "react";
 import { AxiosProgressEvent } from "axios";
@@ -34,7 +33,7 @@ export function ImageUploadProgress(props: IProps) {
             className={classNames(
                 classes.image,
                 classes.progressImage,
-                props.className
+                props.className,
             )}
         >
             <img loading="lazy" src={url} />

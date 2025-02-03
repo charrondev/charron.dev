@@ -1,6 +1,7 @@
 ---
 name: Choosing a new Rich Text Editor in 2022
 slug: chossing-a-new-rich-text-editor-in-2022
+excerpt: Quill's out, Slate's in for Vanilla's next-generation editor.
 tags:
     - contenteditable
     - QuillJS
@@ -20,13 +21,13 @@ a plan to get the project to it's 2.0 release with a few much awaited features.
 
 We developed many improvements on top of the base QuillJS editor including:
 
--   A rich embedding system for embedding external documents.
--   Nested list support.
--   Support for custom multi-line blocks.
--   Fixes for numerous keyboard traps.
--   Markdown-like shortcuts.
--   Mentions.
--   Floating inline and block formatting UI.
+- A rich embedding system for embedding external documents.
+- Nested list support.
+- Support for custom multi-line blocks.
+- Fixes for numerous keyboard traps.
+- Markdown-like shortcuts.
+- Mentions.
+- Floating inline and block formatting UI.
 
 As we neared our launch I reached out to the project maintainer expressing a desire to upstream some patches and expressed
 a desire to assist in triaging the projects public issue tracker which had grown to a sizeable amount.
@@ -53,9 +54,9 @@ TinyMCE has stood the test of time and has a sustainable business model to drive
 
 Notably thought the open source version of TinyMCE is **_missing_** some key feature we would have to re-impement.
 
--   Rich Media Embeds.
--   Mentions.
--   PowerPaste (Pasting from MS Word or Excel).
+- Rich Media Embeds.
+- Mentions.
+- PowerPaste (Pasting from MS Word or Excel).
 
 Still, TinyMCE's staying power and wide community use put it pretty high on the list.
 
@@ -65,12 +66,12 @@ Those missing features from the OSS version _are_ present in the premium version
 the budget to license the full version of the product for our cloud sites. I booked a call with a salespereson from Tiny
 and found a few blockers:
 
--   The pricing scales with the number of customers we gain and is static per use. This means for smaller customers TinyMCE licensing
-    is disproportionate to the price of their plan with us. The quoted price was estimated to cost more roughly 1 intermediate developer's yearly salary.
--   The built-in media embed plugin was not configurable enough for our use case, and we would not be provided with the source of the plugin.
-    As a result we would have to re-implement this plugin blindly even though we were paying for it.
--   The self hosting seemed to be fairly more complicated than using a javascript library should be, requiring hosting additional servers
-    in our production environment.
+- The pricing scales with the number of customers we gain and is static per use. This means for smaller customers TinyMCE licensing
+  is disproportionate to the price of their plan with us. The quoted price was estimated to cost more roughly 1 intermediate developer's yearly salary.
+- The built-in media embed plugin was not configurable enough for our use case, and we would not be provided with the source of the plugin.
+  As a result we would have to re-implement this plugin blindly even though we were paying for it.
+- The self hosting seemed to be fairly more complicated than using a javascript library should be, requiring hosting additional servers
+  in our production environment.
 
 ### SlateJS
 

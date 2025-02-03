@@ -77,7 +77,10 @@ class PostModel {
                 slug,
                 content: parsed.content,
                 tags,
-                excerpt: parsed.excerpt || "No excerpt could be generated",
+                excerpt:
+                    parsed.data.excerpt ||
+                    parsed.excerpt ||
+                    "No excerpt could be generated",
                 seoSummary: "",
                 date,
                 url: `/posts/${slug}`,
@@ -96,7 +99,7 @@ class PostModel {
                 }
             }
 
-            post.excerpt = excerptLines.join("\n\n");
+            post.excerpt = parsed.data.excerpt || excerptLines.join("\n\n");
             post.tags = [];
             for (const tag of tags) {
                 const realTag = this.createTag(tag);
@@ -160,7 +163,7 @@ class PostModel {
                         excerpt,
                         seoSummary: plaintextExcerpt,
                     });
-                }
+                },
             );
         });
     }
@@ -184,13 +187,13 @@ class PostModel {
     public async getRecentPosts(
         offset: number = 0,
         limit: number = 10,
-        asFragment: boolean = true
+        asFragment: boolean = true,
     ): Promise<IPostFragment[]> {
         const start = offset * limit;
         const end = start + limit;
         const slugs = this.postsSlugsByRecency.slice(start, end);
         const posts = await Promise.all(
-            slugs.map((slug) => this.postsBySlug[slug])
+            slugs.map((slug) => this.postsBySlug[slug]),
         );
         return asFragment ? posts.map(this.postToFragment) : posts;
     }
@@ -198,7 +201,7 @@ class PostModel {
     public async getPostsByTag(tagSlug: string): Promise<IPostFragment[]> {
         const slugs = this.postsSlugsByTag[tagSlug];
         const posts = await Promise.all(
-            slugs.map((slug) => this.postsBySlug[slug])
+            slugs.map((slug) => this.postsBySlug[slug]),
         );
         return posts.map(this.postToFragment);
     }

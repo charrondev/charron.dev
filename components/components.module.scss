@@ -1,6 +1,5 @@
 .BigHeader {
     position: relative;
-    margin-bottom: 24px;
     font-size: inherit;
 }
 
@@ -15,10 +14,11 @@
 .separator {
     background: linear-gradient(
         to right,
-        var(--blue9),
-        var(--crimson9)
+        var(--color-primary),
+        var(--color-secondary)
     );
-    height: 4px;
+    height: 3px;
+    border-radius: 5px;
     width: 80px;
     display: block;
     border: none;

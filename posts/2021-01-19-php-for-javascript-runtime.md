@@ -1,6 +1,7 @@
 ---
 name: PHP for Javascript Developers - Runtime
 slug: php-for-javscript-developers-runtime
+excerpt: Here's a cheatsheet showing aspects of the PHP runtime for Javascript developers.
 tags:
     - PHP
     - Javascript
@@ -174,10 +175,10 @@ The most basic form of splitting PHP code is using either `require` or `include`
 
 All of these:
 
--   Locate the requested file.
--   Parse it.
--   Execute the top level code.
--   If the are any symbols declared (like a function of class), these will become available for the rest of the duration of the runtime.
+- Locate the requested file.
+- Parse it.
+- Execute the top level code.
+- If the are any symbols declared (like a function of class), these will become available for the rest of the duration of the runtime.
 
 ```php
 // Fatal error if the file does not exist.
@@ -197,8 +198,8 @@ include_once "fileB.php";
 
 There are some major downsides to manually managing includes though:
 
--   If a try to use a symbol from a file that hasn't been included yet, it will generate a fatal error.
--   You end up essentially needing to manage 1 giant list of files at the start of your program.
+- If a try to use a symbol from a file that hasn't been included yet, it will generate a fatal error.
+- You end up essentially needing to manage 1 giant list of files at the start of your program.
 
 ### PHP Autoloading
 
@@ -224,11 +225,11 @@ Application::start();
 
 [Composer](https://getcomposer.org/) is a commonly used tool for PHP developers. You can think of it as a mix between NPM/yarn and webpack.
 
--   It is a dependency manager. It fetches packages from somewhere (a registry, a github repo, the filesystem) and links them into a `/vendor` directory.
--   It tracks dependencies in a `composer.json` file (similar to `package.json`) and keeps a lockfile `composer.lock` (similar to NPM's `package-lock.json` or yarn's `yarn.lock` file).
--   It generates an efficient class autoloader for all of the vendored dependencies.
--   It allows you to specify for patterns for locating PHP files based on class names in the `composer.json` file.
--   It generates an autoloader for your own classes.
+- It is a dependency manager. It fetches packages from somewhere (a registry, a github repo, the filesystem) and links them into a `/vendor` directory.
+- It tracks dependencies in a `composer.json` file (similar to `package.json`) and keeps a lockfile `composer.lock` (similar to NPM's `package-lock.json` or yarn's `yarn.lock` file).
+- It generates an efficient class autoloader for all of the vendored dependencies.
+- It allows you to specify for patterns for locating PHP files based on class names in the `composer.json` file.
+- It generates an autoloader for your own classes.
 
 With composer to the structure of PHP program then becomes more like
 
@@ -248,11 +249,11 @@ PHP has had 2 defined standards for organizing files and autoloading them, both 
 
 [PSR-0](https://www.php-fig.org/psr/psr-0/)(now deprecated) worked with classes before the introduction of the namespace feature of the language. It's mapping worked like this.
 
--   `Piece_Of_NameSpace_ClassName` -> `/root/Piece/Of/NameSpace/ClassName.php`
+- `Piece_Of_NameSpace_ClassName` -> `/root/Piece/Of/NameSpace/ClassName.php`
 
 [PSR-4](https://www.php-fig.org/psr/psr-4/) maps to the file system according to the `\` character in the namespaces.
 
--   `Piece\Of\NameSpace\ClassName` -> `/root/Piece/Of/NameSpace/ClassName.php`
+- `Piece\Of\NameSpace\ClassName` -> `/root/Piece/Of/NameSpace/ClassName.php`
 
 ## Async
 

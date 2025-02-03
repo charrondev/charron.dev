@@ -6,9 +6,9 @@ import { AlbumForm } from "@components/albums/AlbumForm";
 import { useRouter } from "next/navigation";
 
 interface IProps {
-    params: {
+    params: Promise<{
         editorSlug: string;
-    };
+    }>;
 }
 
 export default function ImagesPage(props: IProps) {

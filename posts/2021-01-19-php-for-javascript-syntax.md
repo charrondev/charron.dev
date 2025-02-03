@@ -1,6 +1,7 @@
 ---
 name: PHP for Javascript Developers - Syntax
 slug: php-for-javscript-developers-syntax
+excerpt: Here's a cheatsheet showing PHP Syntax for Javascript developers.
 tags:
     - PHP
     - Javascript
@@ -53,9 +54,9 @@ $thing1 = $thing2 = 4211;
 
 ### Notable differences
 
--   Local variables in PHP are always preceded by a `$`.
--   PHP has no local variable equivalent to `const` or `let` in javascript.
-    Every local PHP variable is scoped similar to a `var` in javascript.
+- Local variables in PHP are always preceded by a `$`.
+- PHP has no local variable equivalent to `const` or `let` in javascript.
+  Every local PHP variable is scoped similar to a `var` in javascript.
 
     For example they are available across blocks.
 
@@ -216,9 +217,9 @@ $obj = array(
 
 The main differences are:
 
--   Use brackets (`[]`) instead of curly braces (`{}`).
--   Use `=>` instead of `:`.
--   String keys **must** be quoted in PHP.
+- Use brackets (`[]`) instead of curly braces (`{}`).
+- Use `=>` instead of `:`.
+- String keys **must** be quoted in PHP.
 
 ### Differentiating assosciative and indexed arrays in PHP
 
@@ -831,22 +832,22 @@ $instance->method(); // "foo"
 
 ### Notable Differences
 
--   PHP classes support constants.
--   PHP classes support visibility modifiers
-    -   none specified - `public` is assumed. It's good practice to specify a modifier though, and be carefully consider raising internal details above `private`.
-    -   `public` - Anything can access.
-    -   `protected` - The current class and subclasses can access.
-    -   `private` - The current class only can access. Subclasses cannot access.
--   The `function` keyword is required.
--   Properties and methods are access with `->` instead of `.`.
--   Static properties, constants, and methods are accessed with `::`.
-    -   Fun fact, you can access instance methods with `::` as well, but it can look a little weird.
--   `$this` references the current instance instead of `this`.
--   `self` and `static` are used to reference static properties.
-    -   `self` accesses the classes own items and those of parent classes.
-    -   `static` accesses the classes own items and those of parent classes, and those of subclasses.
--   `__construct` is used instead of `__constructor`.
--   Use `parent::` instead of `super`
+- PHP classes support constants.
+- PHP classes support visibility modifiers
+    - none specified - `public` is assumed. It's good practice to specify a modifier though, and be carefully consider raising internal details above `private`.
+    - `public` - Anything can access.
+    - `protected` - The current class and subclasses can access.
+    - `private` - The current class only can access. Subclasses cannot access.
+- The `function` keyword is required.
+- Properties and methods are access with `->` instead of `.`.
+- Static properties, constants, and methods are accessed with `::`.
+    - Fun fact, you can access instance methods with `::` as well, but it can look a little weird.
+- `$this` references the current instance instead of `this`.
+- `self` and `static` are used to reference static properties.
+    - `self` accesses the classes own items and those of parent classes.
+    - `static` accesses the classes own items and those of parent classes, and those of subclasses.
+- `__construct` is used instead of `__constructor`.
+- Use `parent::` instead of `super`
 
 ### Traits
 
@@ -947,8 +948,8 @@ Methods are passed as an array of 2 items.
 
 Notably there are 2 built in functions to deal with `callables`.
 
--   `is_callable($maybeCallable)` - Determine is something is callable.
--   `call_user_func($callable, $arguments)` - Call a callable with some arguments.
+- `is_callable($maybeCallable)` - Determine is something is callable.
+- `call_user_func($callable, $arguments)` - Call a callable with some arguments.
 
 ## Namespaces
 
@@ -986,11 +987,11 @@ TestCase::assert();
 
 ### Using namespaces
 
--   After declaring a `namespace` in your file, all following symbols will be considered part of that namespace.
--   A `use` statement brings a class into scope and allows to refer to it by a shorted name.
-    -   `use \PHPUnit\Framework` would allow you to call `Framework\TestCase::assert()`.
-    -   `use \PHPUnit\Framework\TestCase` allows you to call `TestCase::assert()`.
-    -   If you call a class starting with a `\` character, it will ignore any `use` statements.
-    -   If you call a class without a `\` character:
-        -   It will check if there is a use statement for that short name.
-        -   Then check if that symbol is the current namespace.
+- After declaring a `namespace` in your file, all following symbols will be considered part of that namespace.
+- A `use` statement brings a class into scope and allows to refer to it by a shorted name.
+    - `use \PHPUnit\Framework` would allow you to call `Framework\TestCase::assert()`.
+    - `use \PHPUnit\Framework\TestCase` allows you to call `TestCase::assert()`.
+    - If you call a class starting with a `\` character, it will ignore any `use` statements.
+    - If you call a class without a `\` character:
+        - It will check if there is a use statement for that short name.
+        - Then check if that symbol is the current namespace.

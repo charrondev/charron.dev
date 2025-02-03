@@ -12,14 +12,14 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 interface IProps {
-    params: {
+    params: Promise<{
         post: IPost;
         postSlug: string;
-    };
+    }>;
 }
 
 export default async function PostPage(props: IProps) {
-    const { postSlug } = props.params;
+    const { postSlug } = (await props.params);
 
     const post = await postModel.getPost(postSlug);
     if (!post) {
@@ -35,7 +35,7 @@ export default async function PostPage(props: IProps) {
 }
 
 export async function generateMetadata(props: IProps): Promise<Metadata> {
-    const { postSlug } = props.params;
+    const { postSlug } = (await props.params);
     const post = await postModel.getPost(postSlug);
     return {
         title: `${post.name} | Charron Developer Blog`,

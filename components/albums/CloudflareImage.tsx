@@ -34,7 +34,7 @@ export const CloudflareImageLink = React.forwardRef<HTMLElement, IProps>(
         const { editorSlug } = useParams();
         return (
             <Link
-                {...rest}
+                {...(rest as any)}
                 replace={replace}
                 ref={ref as any}
                 href={`/albums/editor/${editorSlug}/${props.image.imageID}`}
@@ -46,7 +46,7 @@ export const CloudflareImageLink = React.forwardRef<HTMLElement, IProps>(
                 <CloudflareImage image={image} size={size} />
             </Link>
         );
-    }
+    },
 );
 
 export const CloudflareImage = React.forwardRef<HTMLImageElement, IProps>(
@@ -78,5 +78,5 @@ export const CloudflareImage = React.forwardRef<HTMLImageElement, IProps>(
                 src={`${baseUrl}/${size ?? "2000"}`}
             />
         );
-    }
+    },
 );

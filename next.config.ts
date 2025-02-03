@@ -3,22 +3,13 @@
  * @license Proprietary
  */
 
-/**
- * @type {import("next").NextConfig} config
- */
-const config = {
+import type { NextConfig } from "next";
+
+const config: NextConfig = {
     experimental: {
-        optimizeCss: true,
+        // optimizeCss: true,
     },
-    webpack(config, { dev, isServer }) {
-        if (!dev && !isServer) {
-            Object.assign(config.resolve.alias, {
-                "react/jsx-runtime.js": "preact/compat/jsx-runtime",
-                react: "preact/compat",
-                "react-dom/test-utils": "preact/test-utils",
-                "react-dom": "preact/compat",
-            });
-        }
+    webpack(config) {
         config.module.rules.push({
             test: /\.svg$/,
             use: [
@@ -44,7 +35,6 @@ const config = {
         loaderFile: "./cloudflareImageLoader.ts",
     },
     reactStrictMode: true,
-    swcMinify: true,
     pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
 };
 

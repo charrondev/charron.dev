@@ -1,6 +1,7 @@
 ---
 name: Hello world
 slug: hello-world
+excerpt: Surely hosting my own blog will make me write more?
 tags:
     - Hello world
     - Meta

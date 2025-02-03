@@ -8,7 +8,10 @@ interface IProps {
     tooltip: React.ReactNode;
 }
 
-export const ToolTip = React.forwardRef(function ToolTip(props: IProps, ref) {
+export const ToolTip = React.forwardRef(function ToolTip(
+    props: IProps,
+    ref: any,
+) {
     const { children, tooltip, ...rest } = props;
     return (
         <Tooltip.Provider>

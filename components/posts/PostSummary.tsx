@@ -11,6 +11,7 @@ import Link from "next/link";
  */
 import React from "react";
 import styles from "./PostSummary.module.scss";
+import { DateTime } from "@components/DateTime";
 
 interface IProps {
     post: IPostFragment;
@@ -19,14 +20,11 @@ interface IProps {
 export function PostSummary({ post }: IProps) {
     const url = `/posts/${post.slug}`;
     return (
-        <div className={styles.root}>
-            <h2 className={styles.title}>
-                <Link href={url}>{post.name}</Link>
-            </h2>
-            <PostMeta post={post} />
-            <Separator className={styles.separator} />
+        <Link href={url} className={styles.root}>
+            <DateTime className={styles.dateMeta}>{post.date}</DateTime>
+            <h2 className={styles.title}>{post.name}</h2>
             <PostContent className={styles.excerpt}>{post.excerpt}</PostContent>
-            <ColoredButtonLink href={post.url}>View Post →</ColoredButtonLink>
-        </div>
+            <Tags readonly className={styles.tags} tags={post.tags} />
+        </Link>
     );
 }

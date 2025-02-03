@@ -1,6 +1,7 @@
 ---
 name: "Getting to know QuillJS (Parchment, Blots, and Lifecycle)"
 updated: 2020/10/04
+excerpt: The basics of Quill.js
 tags:
     - Javascript
     - contenteditable
@@ -20,10 +21,10 @@ Quill is a mostly batteries-included library with support for most common format
 
 A few months ago, the company I work for, [Vanilla Forums](https://github.com/vanilla) began planning a new editor for our product. Our current editor supported numerous different text entry formats, including
 
--   Markdown
--   BBCode
--   HTML
--   WYSIWYG HTML (using an iFrame to render the contents)
+- Markdown
+- BBCode
+- HTML
+- WYSIWYG HTML (using an iFrame to render the contents)
 
 We had different parsers, renderers, and frontend javascript for all of these formats, so we set out to create new editor to replace them all with a single new unified, rich editing experience.
 
@@ -49,11 +50,11 @@ Each Blot must implement the interface `Blot` and every existing Blot in Quill a
 
 In order to make it possible to look around the document from the perspective of a Blot, every Blot has the following references
 
--   `.parent` - The Blot that contains this Blot. If this Blot is the top level Blot, `parent` will be `null`.
--   `.prev` - The previous sibling Blot in the tree from this Blot's parent. If this iBlotis the first child directly under its `parent`, `prev` will be `null`.
--   `.next` - The next sibling Blot in the tree form this Blot's parent. If this Blot is the last child directly under its `parent`, `next` will be `null`.
--   `.scroll` - The scroll is the top level Blot in Parchment's data structure. More info about the Scroll Blot will be provided later.
--   `.domNode` - Since Parchment's tree maps 1:1 with the DOM's tree, each Blot has access to the `Node` it represents. Additionally these DOM Nodes will have a reference to their Blot (with `.__blot`).
+- `.parent` - The Blot that contains this Blot. If this Blot is the top level Blot, `parent` will be `null`.
+- `.prev` - The previous sibling Blot in the tree from this Blot's parent. If this iBlotis the first child directly under its `parent`, `prev` will be `null`.
+- `.next` - The next sibling Blot in the tree form this Blot's parent. If this Blot is the last child directly under its `parent`, `next` will be `null`.
+- `.scroll` - The scroll is the top level Blot in Parchment's data structure. More info about the Scroll Blot will be provided later.
+- `.domNode` - Since Parchment's tree maps 1:1 with the DOM's tree, each Blot has access to the `Node` it represents. Additionally these DOM Nodes will have a reference to their Blot (with `.__blot`).
 
 ## The Blot Lifecycle
 
@@ -260,8 +261,8 @@ There are 3 primary implementations of this method in different core Blots.
 
 The `ContainerBlot` checks for changes that modify its direct children and will either:
 
--   Remove Blots from the document whose DOM Nodes have been deleted.
--   Add Blots for DOM Nodes that have been added.
+- Remove Blots from the document whose DOM Nodes have been deleted.
+- Add Blots for DOM Nodes that have been added.
 
 If a new DOM Node is added that doesn't match any registered Blots, the container will remove that DOM Node and replace it with DOM Node corresponding to the `InlineBlot` (basically a plain text Blot) with the text content from the originally inserted DOM Node.
 

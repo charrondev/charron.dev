@@ -10,13 +10,13 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 export interface IProps {
-    params: {
+    params: Promise<{
         tagName: string;
-    };
+    }>;
 }
 
 export default async function TagPage(props: IProps) {
-    const { tagName } = props.params;
+    const { tagName } = (await props.params);
     const tag = postModel.getTag(tagName);
     const postFragments = await postModel.getPostsByTag(tagName);
 
@@ -33,8 +33,8 @@ export default async function TagPage(props: IProps) {
     );
 }
 
-export function generateMetadata(props: IProps): Metadata {
-    const { tagName } = props.params;
+export async function generateMetadata(props: IProps): Promise<Metadata> {
+    const { tagName } = (await props.params);
     const tag = postModel.getTag(tagName);
     return {
         title: `#${tag.name} Tag | Charron Developer Blog`,

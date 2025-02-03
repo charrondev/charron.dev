@@ -2,6 +2,7 @@
 name: Speeding Up PHP in Docker w/ XDebug
 slug: "speeding-up-php-in-docker-xdebug"
 updated: 2020/11/06
+excerpt: Tips for speeding up Docker for Mac circa 2020.
 tags:
     - PHP
     - Performance
@@ -37,12 +38,12 @@ where we would see 200-300ms response times in local development.
 
 I tried a few things to speed them up.
 
--   [NFS Volumes](https://www.jeffgeerling.com/blog/2020/revisiting-docker-macs-performance-nfs-volumes) - This offered a 30-40% speed improvement but proved to difficult to roll across all of our developers due to the additional configuration required.
--   [docker-sync](https://docker-sync.readthedocs.io/en/latest/) - This tool gave essentially native performance but brought some major drawbacks. I tried 2 times, once in 2019, and again in the beginning of 2020 but these still seemed to hold true.
-    -   It was very slow to startup. We have a lot of files and directories, and the initial sync would take 10+ minutes with no status indicator. Sometimes it would hang entirely and you'd have to reboot your machine, wipe the containers, and start again.
-    -   It would stop syncing at random times with no indication. You would notice when you changes suddenly stopped applying. Often the only fix was to wipe the volumes and redo the initial sync. This was particularly evident when checking out and older release and swithing back.
-    -   The configuration was complicated. Additional commands were required for startup, and the configuration file used a poorly documented syntax for marking excluded directories (a few `node_modules` directories in particular needed to be excluded in order for things to sync for even short periods of time).
-    -   Sometimes filesystem permissions wouldn't sync properly. This tended to happen with certain configuration files written by the app.
+- [NFS Volumes](https://www.jeffgeerling.com/blog/2020/revisiting-docker-macs-performance-nfs-volumes) - This offered a 30-40% speed improvement but proved to difficult to roll across all of our developers due to the additional configuration required.
+- [docker-sync](https://docker-sync.readthedocs.io/en/latest/) - This tool gave essentially native performance but brought some major drawbacks. I tried 2 times, once in 2019, and again in the beginning of 2020 but these still seemed to hold true.
+    - It was very slow to startup. We have a lot of files and directories, and the initial sync would take 10+ minutes with no status indicator. Sometimes it would hang entirely and you'd have to reboot your machine, wipe the containers, and start again.
+    - It would stop syncing at random times with no indication. You would notice when you changes suddenly stopped applying. Often the only fix was to wipe the volumes and redo the initial sync. This was particularly evident when checking out and older release and swithing back.
+    - The configuration was complicated. Additional commands were required for startup, and the configuration file used a poorly documented syntax for marking excluded directories (a few `node_modules` directories in particular needed to be excluded in order for things to sync for even short periods of time).
+    - Sometimes filesystem permissions wouldn't sync properly. This tended to happen with certain configuration files written by the app.
 
 ## The Real Problem - XDebug
 
@@ -72,11 +73,11 @@ Nginx was already used to serve our PHP-FPM processes, so I just updated the con
 
 This is the bulk of the required configuration. It does the following:
 
--   Define the 2 upstreams (php-fpm socket and php-fpm-xdebug socket).
--   Define a few mappings 2 allow switching between the 2 upstreams based on
-    -   An XDebug cookie.
-    -   A query parameter of `?XDEBUG_SESSION_START`
-    -   Many possible cookie values used by various browser plugins and IDEs.
+- Define the 2 upstreams (php-fpm socket and php-fpm-xdebug socket).
+- Define a few mappings 2 allow switching between the 2 upstreams based on
+    - An XDebug cookie.
+    - A query parameter of `?XDEBUG_SESSION_START`
+    - Many possible cookie values used by various browser plugins and IDEs.
 
 ```nginx
 http {

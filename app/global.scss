@@ -2,32 +2,54 @@
 @import "@radix-ui/colors/mauve.css";
 @import "@radix-ui/colors/indigo.css";
 @import "@radix-ui/colors/crimson.css";
-@import "@radix-ui/colors/slateDark.css";
-@import "@radix-ui/colors/mauveDark.css";
-@import "@radix-ui/colors/indigoDark.css";
-@import "@radix-ui/colors/crimsonDark.css";
+@import "@radix-ui/colors/slate-dark.css";
+@import "@radix-ui/colors/mauve-dark.css";
+@import "@radix-ui/colors/indigo-dark.css";
+@import "@radix-ui/colors/crimson-dark.css";
 
 :root,
 .dark-theme {
-    --color-text: var(--mauve12);
-    --color-bg: var(--mauve1);
-    --color-section: var(--indigo12);
-    --color-section-contrast: var(--indigo1);
-    --color-section-highlight: var(--indigo5);
-    --color-border: var(--indigo11);
+
+    // Font Sack
+    --font-sans:  system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
+
+    --font-serif-display: "DMSerifDisplay", Palatino, Palladio,
+        "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style",
+        "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond",
+        "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook",
+        "Century Schoolbook L", Georgia, serif;
+
+    --font-serif-text: "Forum", Palatino, Palladio, "URW Palladio L",
+        "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter",
+        "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow",
+        "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L",
+        Georgia, serif;
+
+    --color-text: var(--mauve-12);
+    --color-bg: var(--mauve-1);
+    --color-section: var(--indigo-12);
+    --color-section-contrast: var(--indigo-1);
+    --color-section-highlight: var(--indigo-5);
+    --color-border: var(--indigo-11);
     --color-primary-fade: var(--crimson-3);
-    --color-primary: var(--crimson9);
-    --color-secondary: var(--indigo9);
-    --color-secondary-fade: var(--indigo3);
-    --color-secondary-edge: var(--indigo7);
+    --color-primary: var(--crimson-9);
+    --color-secondary: var(--indigo-9);
+    --color-secondary-fade: var(--indigo-3);
+    --color-secondary-edge: var(--indigo-7);
     --color-meta: hsl(206deg 7.18% 28.91%);
 
+    // I don't have dark/light variants of colors wired up yet for these
+    --color-code-bg: #111b27;
+    --color-code-fg: #f8f8f2;
+
     // Forms
-    --form-bg-color: var(--indigo3);
-    --form-bg-active-color: var(--indigo4);
-    --form-placeholder-color: var(--indigo6);
-    --form-fg-color: var(--indigo12);
-    --form-border-color: var(--indigo7);
+    --form-bg-color: var(--indigo-3);
+    --form-bg-active-color: var(--indigo-4);
+    --form-placeholder-color: var(--indigo-6);
+    --form-fg-color: var(--indigo-12);
+    --form-border-color: var(--indigo-7);
 
     // https://www.joshwcomeau.com/shadow-palette/
     --shadow-color: 0deg 0% 0%;
@@ -47,27 +69,27 @@
     --color-blur-bg: rgba(255, 255, 255, 0.4);
     --color-blur-bg-active: rgba(0, 0, 0, 0.1);
     --color-blur-border: rgba(0, 0, 0, 0.2);
-    --color-blur-fg: var(--mauve12);
+    --color-blur-fg: var(--mauve-12);
 }
 
 .dark-theme {
-    --color-section: var(--mauve3);
-    --color-section-contrast: var(--mauve12);
-    --color-section-highlight: var(--indigo11);
+    --color-section: var(--mauve-3);
+    --color-section-contrast: var(--mauve-12);
+    --color-section-highlight: var(--indigo-11);
     --color-meta: hsl(208, 49%, 85%);
-    --color-secondary: var(--indigo10);
-    --color-secondary-fade: var(--indigo1);
-    --color-secondary-edge: var(--indigo7);
+    --color-secondary: var(--indigo-10);
+    --color-secondary-fade: var(--indigo-1);
+    --color-secondary-edge: var(--indigo-7);
     --shadow-filter: drop-shadow(0 4px 2px rgba(0, 0, 0, 0.1))
         drop-shadow(0 10px 6px rgba(0, 0, 0, 0.2))
         drop-shadow(0 30px 20px rgba(0, 0, 0, 0.3));
 
     // Forms
-    --form-bg-color: var(--mauve3);
-    --form-bg-active-color: var(--mauve4);
-    --form-placeholder-color: var(--mauve11);
+    --form-bg-color: var(--mauve-3);
+    --form-bg-active-color: var(--mauve-4);
+    --form-placeholder-color: var(--mauve-11);
     --form-fg-color: #fff;
-    --form-border-color: var(--mauve3);
+    --form-border-color: var(--mauve-3);
 
     --color-blur-bg: rgba(0, 0, 0, 0.6);
     --color-blur-bg-active: rgba(255, 255, 255, 0.05);
@@ -79,8 +101,7 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: var(--font-sans);
     font-size: 18px;
     color: var(--color-text);
     min-height: 100%;
@@ -94,6 +115,7 @@ h3,
 h4,
 h5,
 h6 {
+    font-family: var(--font-serif-display);
     margin-bottom: 0.5em;
 }
 
