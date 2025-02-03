@@ -1,6 +1,5 @@
 import styles from "./not-found.module.scss";
 
-export const runtime = "edge";
 export const dynamicParams = false;
 
 const STRINGS = [

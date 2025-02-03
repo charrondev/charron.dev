@@ -2,8 +2,6 @@ import { cookies } from "next/headers";
 import Script from "next/script";
 import "./global.scss";
 
-export const runtime = "edge";
-
 interface IProps {
     children: React.ReactNode;
 }

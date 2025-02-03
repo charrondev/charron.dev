@@ -47,6 +47,7 @@
     },
     "devDependencies": {
         "@cloudflare/next-on-pages": "^1.13.7",
+        "@opennextjs/cloudflare": "^0.4.3",
         "@svgr/webpack": "^8.1.0",
         "@types/node": "^22.13.0",
         "@types/proper-lockfile": "^4.1.4",
