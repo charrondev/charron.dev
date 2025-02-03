@@ -23,6 +23,8 @@
         "@radix-ui/react-toggle-group": "^1.1.1",
         "@radix-ui/react-toolbar": "^1.1.1",
         "@radix-ui/react-tooltip": "^1.1.7",
+        "@vercel/analytics": "^1.4.1",
+        "@vercel/speed-insights": "^1.1.0",
         "axios": "^1.7.9",
         "blurhash": "^2.0.5",
         "classnames": "^2.5.1",

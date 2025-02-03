@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
-import Script from "next/script";
 import "./global.scss";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 interface IProps {
     children: React.ReactNode;
@@ -26,11 +27,8 @@ export default async function RootLayoutImpl(props: IProps) {
                     requests per hour."
                 ></meta>
             </head>
-            <Script
-                strategy="lazyOnload"
-                data-domain="charron.dev"
-                src="https://stats.charron.dev/js/plausible.js"
-            />
+            <Analytics />
+            <SpeedInsights />
             <body className={themeClass}>{props.children}</body>
         </html>
     );
