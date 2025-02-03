@@ -7,9 +7,18 @@ import type { NextConfig } from "next";
 
 const config: NextConfig = {
     experimental: {
-        // optimizeCss: true,
+        // Stub out when doing development.
+        optimizeCss: true,
     },
-    webpack(config) {
+    webpack(config, { dev, isServer }) {
+        if (!dev && !isServer) {
+            Object.assign(config.resolve.alias, {
+                "react/jsx-runtime.js": "preact/compat/jsx-runtime",
+                react: "preact/compat",
+                "react-dom/test-utils": "preact/test-utils",
+                "react-dom": "preact/compat",
+            });
+        }
         config.module.rules.push({
             test: /\.svg$/,
             use: [

@@ -1,8 +1,8 @@
-import { ContextError } from "@app/api/ContextError";
+import { ContextError } from "stubbed/api/ContextError";
 import { NextRequest, NextResponse } from "next/server";
 
 export function apiRoute(
-    next: (request: NextRequest) => Promise<NextResponse> | NextResponse
+    next: (request: NextRequest) => Promise<NextResponse> | NextResponse,
 ) {
     return async (request: NextRequest): Promise<NextResponse> => {
         try {
@@ -20,7 +20,7 @@ export function apiRoute(
                         trace: err.stack,
                         cause: err.cause,
                     },
-                    { status: 500 }
+                    { status: 500 },
                 );
             } else {
                 throw err;

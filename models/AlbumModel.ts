@@ -1,4 +1,4 @@
-import { ContextError } from "@app/api/ContextError";
+import { ContextError } from "stubbed/api/ContextError";
 import { indexArrayByKey } from "@utils/indexArrayByKey";
 import { notEmpty } from "@utils/notEmpty";
 import fs from "fs";
@@ -26,30 +26,30 @@ export class AlbumModel {
     private loadFsData = () => {
         this.tagImageStore = this.loadJson(
             path.join(ALBUM_BASE_PATH, "tag-images.json"),
-            {}
+            {},
         );
         this.imageStore = this.loadJson(
             path.join(ALBUM_BASE_PATH, "images.json"),
-            {}
+            {},
         );
         this.albumStore = this.loadJson(
             path.join(ALBUM_BASE_PATH, "albums.json"),
-            {}
+            {},
         );
     };
 
     private persistFsData = () => {
         this.saveJson(
             path.join(ALBUM_BASE_PATH, "tag-images.json"),
-            this.tagImageStore
+            this.tagImageStore,
         );
         this.saveJson(
             path.join(ALBUM_BASE_PATH, "images.json"),
-            this.imageStore
+            this.imageStore,
         );
         this.saveJson(
             path.join(ALBUM_BASE_PATH, "albums.json"),
-            this.albumStore
+            this.albumStore,
         );
     };
 

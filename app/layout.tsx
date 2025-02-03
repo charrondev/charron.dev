@@ -6,6 +6,8 @@ interface IProps {
     children: React.ReactNode;
 }
 
+export const dynamic = "force-static";
+
 export default async function RootLayoutImpl(props: IProps) {
     const theme = (await cookies()).get("theme")?.value ?? "dark";
 

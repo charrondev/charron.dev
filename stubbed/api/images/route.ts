@@ -1,5 +1,5 @@
-import { ContextError } from "@app/api/ContextError";
-import { apiRoute } from "@app/api/apiUtils";
+import { ContextError } from "stubbed/api/ContextError";
+import { apiRoute } from "stubbed/api/apiUtils";
 import { Axios } from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -14,7 +14,7 @@ export const POST = apiRoute(
 
         if (!imageToken) {
             throw new Error(
-                "Missing configuration for cloudflare access token."
+                "Missing configuration for cloudflare access token.",
             );
         }
 
@@ -33,7 +33,7 @@ export const POST = apiRoute(
                     }),
                     method: "POST",
                     body: formData,
-                }
+                },
             );
             var json = await response.json();
         } catch (err) {
@@ -44,7 +44,7 @@ export const POST = apiRoute(
                     connectionError: {
                         message: (err as Error).message,
                     },
-                }
+                },
             );
         }
         if (!response.ok) {
@@ -60,12 +60,12 @@ export const POST = apiRoute(
                         status: response.status,
                         headers: Object.fromEntries(response.headers.entries()),
                     },
-                }
+                },
             );
         }
 
         return NextResponse.json(json, { status: 201 });
-    }
+    },
 );
 
 function prepareAxios(): Axios {

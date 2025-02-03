@@ -1,6 +1,6 @@
 "use client";
 
-import { ContextError } from "@app/api/ContextError";
+import { ContextError } from "stubbed/api/ContextError";
 import axios, { AxiosProgressEvent, AxiosResponse, isAxiosError } from "axios";
 import { encode as encodeBlurHash } from "blurhash";
 import exifr from "exifr/dist/full.esm.mjs";
@@ -22,7 +22,7 @@ type PreuploadedImage = Omit<IAlbumImage, "imageID">;
 
 async function preuploadFile(
     file: File,
-    loadedImage: HTMLImageElement
+    loadedImage: HTMLImageElement,
 ): Promise<PreuploadedImage> {
     const imageData = extractImageData(loadedImage);
     const blurHash = encodeBlurHash(
@@ -30,12 +30,12 @@ async function preuploadFile(
         imageData.width,
         imageData.height,
         4,
-        4
+        4,
     );
 
     const metadata = await exifr.parse(
         loadedImage,
-        EXIF_FIELDS as any as string[]
+        EXIF_FIELDS as any as string[],
     );
 
     const colors = extractColorsFromImageData(imageData, {
@@ -59,7 +59,7 @@ async function preuploadFile(
 
 export async function uploadImage(
     file: File,
-    progressEmitter?: ProgressEventEmitter
+    progressEmitter?: ProgressEventEmitter,
 ): Promise<IAlbumImage> {
     const url = URL.createObjectURL(file);
     const loadedImage = await loadImage(url);
@@ -83,7 +83,7 @@ export async function uploadImage(
         throw new ContextError(
             "Response did not contain a cloudflare image ID",
             500,
-            json
+            json,
         );
     }
 
@@ -95,7 +95,7 @@ export async function uploadImage(
 }
 
 function tryCompressAndReupload(
-    uploadedImage: HTMLImageElement
+    uploadedImage: HTMLImageElement,
 ): Promise<AxiosResponse> {
     return new Promise((resolve, reject) => {
         const newWidth = Math.round(uploadedImage.naturalWidth * 0.8);
@@ -109,7 +109,7 @@ function tryCompressAndReupload(
                 return resolve(uploadFileToApi(blob));
             },
             "image/jpeg",
-            95
+            95,
         );
     });
 }
@@ -142,7 +142,7 @@ export class ProgressEventEmitter {
 
     public removeEventListener = (listener: ProgressEventHandler) => {
         this.listeners = this.listeners.filter(
-            (registeredListener) => listener !== registeredListener
+            (registeredListener) => listener !== registeredListener,
         );
     };
 }
@@ -158,7 +158,7 @@ export function loadImage(imgSrc: string): Promise<HTMLImageElement> {
 }
 
 export function getImageDimensions(
-    image: File
+    image: File,
 ): Promise<{ height: number; width: number }> {
     return new Promise((resolve) => {
         const img = new Image();
@@ -176,7 +176,7 @@ export function getImageDimensions(
 
 function shrinkToCanvas(
     image: HTMLImageElement,
-    maxWidth: number
+    maxWidth: number,
 ): {
     canvas: HTMLCanvasElement;
     context: CanvasRenderingContext2D;
