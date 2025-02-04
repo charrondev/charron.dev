@@ -143,7 +143,11 @@ class PostModel {
             const file = await unified()
                 .use(remarkParse)
                 .use(remarkRehype)
-                .use(rehypePrism)
+                .use(rehypePrism, {
+                    alias: {
+                        shell: ["bash", "sh", "http"],
+                    },
+                })
                 .use(rehypeFormat)
                 .use(rehypeStringify)
                 .process(content);

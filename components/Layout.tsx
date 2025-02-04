@@ -26,12 +26,7 @@ export function Layout(props: IProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     const nav = (
-        <nav
-            className={classNames(
-                classes.headerNav,
-                isOpen && classes.headerNavOpen,
-            )}
-        >
+        <nav className={classNames(classes.headerNav)}>
             <NavLink href="/posts">Posts</NavLink>
             <NavLink href="/tags">Tags</NavLink>
             <NavLink href="/feed.xml">RSS Feed</NavLink>
@@ -72,20 +67,6 @@ export function Layout(props: IProps) {
                             )}
                         />
                     </Link>
-                    <span className={classes.hamburgerWrap}>
-                        <Hamburger
-                            className={
-                                isOpen ? classes.hamburgerOpen : undefined
-                            }
-                            onClick={() => {
-                                if (isOpen) {
-                                    setIsOpen(false);
-                                } else {
-                                    setIsOpen(true);
-                                }
-                            }}
-                        />
-                    </span>
                     {nav}
                     <ThemeToggle />
                 </div>
