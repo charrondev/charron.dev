@@ -2,6 +2,7 @@ import { createOgImage } from "@components/createOgImage";
 import { postModel } from "@utils/PostModel";
 
 export const contentType = "image/png";
+export const dynamic = "force-static";
 
 export default async function PostOpenGraphImage(props: {
     params: { postSlug: string };
@@ -14,4 +15,8 @@ export default async function PostOpenGraphImage(props: {
     }
 
     return createOgImage(post.name);
+}
+
+export function generateStaticParams() {
+    return postModel.getAllPostSlugs().map((slug) => ({ postSlug: slug }));
 }

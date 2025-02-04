@@ -8,7 +8,7 @@ import type { NextConfig } from "next";
 const config: NextConfig = {
     experimental: {
         // Stub out when doing development.
-        // optimizeCss: true,
+        optimizeCss: true,
     },
     webpack(config, { dev, isServer }) {
         config.module.rules.push({

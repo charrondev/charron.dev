@@ -12,7 +12,7 @@ import React from "react";
 
 export default async function PostIndexPage() {
     const page = 1;
-    const postFragments = await postModel.getRecentPosts(page - 1, 10);
+    const postFragments = await postModel.getRecentPosts(page - 1, 30);
 
     if (!postFragments) {
         return <div>Not found</div>;
@@ -29,6 +29,10 @@ export default async function PostIndexPage() {
             })}
         </Layout>
     );
+}
+
+export function generateStaticParams() {
+    return [];
 }
 
 export function generateMetadata(): Metadata {
