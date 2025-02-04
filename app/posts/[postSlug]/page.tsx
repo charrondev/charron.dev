@@ -13,13 +13,12 @@ import { notFound } from "next/navigation";
 
 interface IProps {
     params: Promise<{
-        post: IPost;
         postSlug: string;
     }>;
 }
 
 export default async function PostPage(props: IProps) {
-    const { postSlug } = (await props.params);
+    const { postSlug } = await props.params;
 
     const post = await postModel.getPost(postSlug);
     if (!post) {
@@ -34,9 +33,14 @@ export default async function PostPage(props: IProps) {
     );
 }
 
+export function generateStaticParams() {
+    return postModel.getAllPostSlugs().map((slug) => ({ postSlug: slug }));
+}
+
 export async function generateMetadata(props: IProps): Promise<Metadata> {
-    const { postSlug } = (await props.params);
+    const { postSlug } = await props.params;
     const post = await postModel.getPost(postSlug);
+
     return {
         title: `${post.name} | Charron Developer Blog`,
         description: post.seoSummary,
