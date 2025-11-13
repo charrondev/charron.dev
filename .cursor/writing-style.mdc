@@ -1,0 +1,164 @@
+# Writing Style Guide for Blog Posts
+
+This guide defines the writing style for blog posts on charron.dev. Follow these patterns to maintain consistency across all articles.
+
+## Frontmatter
+
+Every post must start with frontmatter in YAML format:
+
+```yaml
+---
+name: "Article Title"
+slug: article-slug
+excerpt: A brief description of what the article covers. Keep it conversational and personal.
+tags:
+    - Tag1
+    - Tag2
+---
+```
+
+## Tone and Voice
+
+### Use First-Person, Personal Voice
+- ✅ "I've been working with..."
+- ✅ "I decided to benchmark..."
+- ✅ "I wanted to understand..."
+- ✅ "I found that..."
+- ❌ "This article explores..."
+- ❌ "We created a benchmark..."
+- ❌ "Our research demonstrates..."
+
+### Be Conversational, Not Academic
+- ✅ Write like you're explaining to a colleague
+- ✅ Use contractions (it's, don't, can't)
+- ✅ Keep sentences relatively short
+- ❌ Avoid formal academic language
+- ❌ Don't use phrases like "This article explores", "Our findings indicate", "It is worth noting that"
+
+## Structure
+
+### Avoid Overly Formal Sections
+- ❌ "Introduction" as a heading
+- ❌ "Conclusion" as a heading (use "Takeaways" instead)
+- ❌ "Key Findings" or "Key Observations" as separate sections
+- ✅ Integrate findings naturally into the narrative
+- ✅ Use descriptive section headings that explain what's coming
+
+### Opening
+Start with a personal hook or context:
+- ✅ "I've been working with X for years..."
+- ✅ "Recently, I decided to..."
+- ✅ "I was recently looking for..."
+- ❌ Formal introductions that explain what the article will cover
+
+### Paragraph Length
+- Keep paragraphs relatively short (2-4 sentences typically)
+- Break up dense technical explanations
+- Use line breaks to improve readability
+
+## Language Patterns
+
+### Personal Context
+Always include personal context:
+- Why you investigated this
+- What you discovered
+- Real-world scenarios you've encountered
+
+### Avoid Repetition
+- Don't repeat the same information multiple times
+- If you show a table or data, don't repeat it in multiple sections
+- Trust the reader to remember earlier information
+
+### Soften Formal Language
+- ❌ "This represents a best-case scenario"
+- ✅ "I designed this to represent a best-case scenario"
+- ❌ "The benchmark demonstrates"
+- ✅ "The benchmark shows" or "I found that"
+
+## Examples
+
+### Good Opening
+```
+I've been using Docker for my local environments at Vanilla since 2017.
+It was a good way to ensure consistent & reproducible developer environments
+and was a marked improvement over what we were running before.
+```
+
+### Good Personal Context
+```
+I wanted to quantify the impact of this, so I created a benchmark comparing
+PSR-15 recursive middleware against a stackless flat iteration approach.
+```
+
+### Good Section Transition
+```
+You might be wondering: when would you actually hit 100+ middleware layers?
+I tested up to 100 layers to reflect patterns I've seen in large, mature
+PHP codebases.
+```
+
+### Avoid This
+```
+## Introduction
+
+When building web applications in PHP, middleware is a fundamental pattern
+for handling cross-cutting concerns. This article explores the performance
+impact of stack depth and demonstrates how a flat iteration approach can
+dramatically improve performance.
+
+## Key Findings
+
+1. Exponential Performance Degradation: PSR-15 recursive middleware shows...
+2. Scaling Characteristics: The performance gap widens dramatically...
+```
+
+## Technical Content
+
+### Code Examples
+- Include code examples when relevant
+- Explain what the code does, but keep explanations concise
+- Reference GitHub repos or external resources when appropriate
+
+### Data and Benchmarks
+- Present data clearly (tables are fine)
+- Don't repeat the same data in multiple places
+- Explain what the data means in plain language
+- Include context about why the benchmarks might be conservative or optimistic
+
+### Real-World Examples
+- Reference actual projects or companies when relevant (e.g., Vanilla Forums)
+- Explain real-world scenarios where the problem occurs
+- Use examples from your own experience
+
+## Closing
+
+### Use "Takeaways" Instead of "Conclusion"
+- Summarize key points
+- Keep it conversational
+- End with practical advice or next steps when appropriate
+
+### Example Closing
+```
+## Takeaways
+
+Stack depth has a profound impact on PHP performance. The benchmarks show
+that recursive middleware introduces exponential performance degradation as
+stack depth increases, while flat iteration maintains near-linear performance.
+
+For applications with deep middleware stacks, adopting a flat iteration
+approach can provide 30-60% performance improvements...
+```
+
+## Checklist
+
+Before publishing, ensure:
+- [ ] Frontmatter is present with name, slug, excerpt, and tags
+- [ ] Opening is personal and conversational
+- [ ] First-person voice is used throughout
+- [ ] No overly formal section headings ("Introduction", "Conclusion")
+- [ ] Paragraphs are reasonably short
+- [ ] No repetitive information
+- [ ] Personal context is included
+- [ ] Language is conversational, not academic
+- [ ] Technical content is explained clearly
+- [ ] Real-world examples are included where relevant
