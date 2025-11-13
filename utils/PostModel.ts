@@ -10,6 +10,7 @@ import matter from "gray-matter";
 import { slugify } from "@utils/slugify";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
+import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypeFormat from "rehype-format";
 import rehypeStringify from "rehype-stringify";
@@ -142,6 +143,7 @@ class PostModel {
         async function render(content: string) {
             const file = await unified()
                 .use(remarkParse)
+                .use(remarkGfm)
                 .use(remarkRehype)
                 .use(rehypePrism, {
                     alias: {
